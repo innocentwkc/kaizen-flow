@@ -1,46 +1,65 @@
+// Export a function called 'parseUnitsAndSubChapters' that takes 'text' as input.
 module.exports = function parseUnitsAndSubChapters(text) {
+  // Initialize an array to store parsed units.
   var units = [];
-var currentUnit = null;
 
-var lines = text.split('\n');
-var stopParsing = false; // Added flag to stop parsing when "Appendix" is found
+  // Initialize a variable to keep track of the current unit being parsed.
+  var currentUnit = null;
 
-lines.forEach(function (line) {
-  if (stopParsing) {
-    return; // Stop parsing if the flag is set
+  // Split the 'text' into an array of lines for processing.
+  var lines = text.split('\n');
+
+  // Initialize a flag to stop parsing when the "Appendix" keyword is found.
+  var stopParsing = false;
+
+  // Iterate through each line in the 'text'.
+  lines.forEach(function (line) {
+    // If the flag to stop parsing is set, return and stop further parsing.
+    if (stopParsing) {
+      return;
+    }
+
+    // Check if the line starts with 'Unit' indicating the start of a new unit.
+    if (line.trim().startsWith('Unit')) {
+      // If a current unit exists, push it to the 'units' array.
+      if (currentUnit !== null) {
+        units.push(currentUnit);
+      }
+
+      // Create a new 'currentUnit' object with the unit number and an empty subChapters array.
+      currentUnit = {
+        unitNumber: line.trim(),
+        subChapters: [],
+      };
+    } else if (currentUnit !== null) {
+      // Use regular expressions to extract sub-chapter numbers and titles.
+      var subChapterMatch = /(\d+\.\d+)\s+([\s\S]*?)(?=(\d+\.\d+|$))/g;
+      var subChapterMatchResult;
+      while ((subChapterMatchResult = subChapterMatch.exec(line)) !== null) {
+        var subChapterNumber = subChapterMatchResult[1];
+        var subChapterTitle = subChapterMatchResult[2].trim();
+
+        // Add the extracted sub-chapter information to the current unit's subChapters array.
+        currentUnit.subChapters.push({ subChapterNumber, subChapterTitle });
+      }
+
+      // Check for the "Appendix" keyword and set the flag to stop parsing.
+      if (line.trim().startsWith('Appendix')) {
+        stopParsing = true;
+      }
+    }
+  });
+
+  // If a current unit exists, push it to the 'units' array.
+  if (currentUnit !== null) {
+    units.push(currentUnit);
   }
 
-  if (line.trim().startsWith('Unit')) {
-    if (currentUnit !== null) {
-      units.push(currentUnit);
-    }
-    currentUnit = {
-      unitNumber: line.trim(),
-      subChapters: [],
-    };
-  } else if (currentUnit !== null) {
-    var subChapterMatch = /(\d+\.\d+)\s+([\s\S]*?)(?=(\d+\.\d+|$))/g;
-    var subChapterMatchResult;
-    while ((subChapterMatchResult = subChapterMatch.exec(line)) !== null) {
-      var subChapterNumber = subChapterMatchResult[1];
-      var subChapterTitle = subChapterMatchResult[2].trim();
-      currentUnit.subChapters.push({ subChapterNumber, subChapterTitle });
-    }
+  // Create a result object containing the parsed units and their sub-chapters.
+  var result = {
+    units: units,
+  };
 
-    // Check for the "Appendix" keyword and set the flag to stop parsing
-    if (line.trim().startsWith('Appendix')) {
-      stopParsing = true;
-    }
-  }
-});
-
-if (currentUnit !== null) {
-  units.push(currentUnit);
-}
-
-var result = {
-  units: units,
-};
-
-return result
+  // Return the result object.
+  return result;
 };
