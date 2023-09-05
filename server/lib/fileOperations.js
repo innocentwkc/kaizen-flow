@@ -1,9 +1,8 @@
 // Import necessary modules for file system operations and working with file paths.
 const fs = require('fs');
-const path = require('path');
 
 // Define a function 'saveTextToFile' that saves text to a specified file path.
-function saveTextToFile(text, outputTextPath, callback) {
+const saveTextToFile = (text, outputTextPath, callback) => {
   // Use the 'fs' module to write the 'text' to the specified 'outputTextPath' file.
   fs.writeFile(outputTextPath, text, function (err) {
     if (err) {
@@ -20,7 +19,7 @@ function saveTextToFile(text, outputTextPath, callback) {
 }
 
 // Define a function 'saveJsonToFile' that saves JSON data to a specified file path.
-function saveJsonToFile(data, outputJsonPath, callback) {
+const saveJsonToFile = (data, outputJsonPath, callback) => {
   // Convert the 'data' object to a formatted JSON string.
   const jsonContent = JSON.stringify(data, null, 2);
 

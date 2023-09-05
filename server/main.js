@@ -1,5 +1,4 @@
 // Import necessary modules
-const fs = require('fs');  // File system module for working with files
 const path = require('path');  // Path module for handling file paths
 const extract = require('pdf-text-extract');  // PDF text extraction library
 const extractTableOfContents = require('./lib/extractTableOfContents');  // Custom function to extract the table of contents
