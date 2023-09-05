@@ -1,5 +1,5 @@
 // Export a function called 'parseUnitsAndSubChapters' that takes 'text' as input.
-module.exports = function parseUnitsAndSubChapters(text) {
+module.exports = function parseChapters(text) {
   // Initialize an array to store parsed units.
   var units = [];
 

@@ -1,12 +1,12 @@
 // Import necessary modules
 const path = require('path');  // Path module for handling file paths
 const extract = require('pdf-text-extract');  // PDF text extraction library
-const extractTableOfContents = require('./lib/extractTableOfContents');  // Custom function to extract the table of contents
-const parseUnitsAndSubChapters = require('./lib/parseUnitsAndSubChapters');  // Custom function to parse units and sub-chapters from text
+const extractTOC = require('./lib/extractTOC');  // Custom function to extract the table of contents
+const parseChapters = require('./lib/parseChapters');  // Custom function to parse units and sub-chapters from text
 const fileOperations = require('./lib/fileOperations');  // Custom file operation functions
 
 // Define the path to the PDF file you want to extract text from
-const filePath = path.join(__dirname, 'test-data/test4.pdf');
+const filePath = path.join(__dirname, 'test-data/test4.pdf'); // TODO: convert to 
 
 // Extract text from the PDF file using the 'pdf-text-extract' library
 extract(filePath, function (err, pages) {
@@ -33,7 +33,7 @@ extract(filePath, function (err, pages) {
   });
 
   // Extract table of contents from the extracted text using a custom function
-  const tableOfContentsText = extractTableOfContents(text);
+  const tableOfContentsText = extractTOC(text);
 
   if (!tableOfContentsText) {
     console.log('Table of contents not found.');
@@ -41,7 +41,7 @@ extract(filePath, function (err, pages) {
   }
 
   // Parse units and sub-chapters from the extracted text using a custom function
-  const units = parseUnitsAndSubChapters(text);
+  const units = parseChapters(text);
 
   // Create a result object containing the extracted units
   const result = {
