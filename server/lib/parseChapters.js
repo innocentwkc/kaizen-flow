@@ -1,4 +1,11 @@
-// Export a function called 'parseUnitsAndSubChapters' that takes 'text' as input.
+/**
+ * Parses units and their sub-chapters from the given text.
+ * This function processes the text and extracts information about units and their sub-chapters.
+ * It returns an object containing the parsed units and sub-chapters.
+ * 
+ * @param {string} text - The text content to be parsed.
+ * @return {object} An object containing the parsed units and sub-chapters.
+ */
 module.exports = function parseChapters(text) {
   // Initialize an array to store parsed units.
   var units = [];

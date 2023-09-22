@@ -1,3 +1,12 @@
+/**
+ * This script extracts text and structural information from a PDF file.
+ * It extracts the text, table of contents, units, and sub-chapters, and saves the results in various formats.
+ * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
+ */
+
 // Import necessary modules
 const path = require('path');  // Path module for handling file paths
 const extract = require('pdf-text-extract');  // PDF text extraction library
@@ -6,7 +15,7 @@ const parseChapters = require('./lib/parseChapters');  // Custom function to par
 const fileOperations = require('./lib/fileOperations');  // Custom file operation functions
 
 // Define the path to the PDF file you want to extract text from
-const filePath = path.join(__dirname, 'test-data/test4.pdf'); // TODO: convert to 
+const filePath = path.join(__dirname, 'test-data/test4.pdf'); // TODO: Convert to a user-specified file path
 
 // Extract text from the PDF file using the 'pdf-text-extract' library
 extract(filePath, function (err, pages) {

@@ -1,5 +1,9 @@
-// Define and export a function called 'extractTableOfContents'.
-// This function takes 'text' as input and extracts the table of contents from the text.
+/**
+ * Extracts the table of contents from the given text.
+ *
+ * @param {string} text - The input text containing the table of contents.
+ * @return {string|null} The extracted table of contents as a string, or null if not found.
+ */
 module.exports = extractTOC = (text) => {
   // Split the input 'text' into an array of lines for easier processing.
   const lines = text.split('\n');
