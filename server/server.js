@@ -1,10 +1,15 @@
-const express = require('express');
 const path = require('path');
-const uploadMiddleware = require('./uploadMiddleware');
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser')
+const uploadMiddleware = require('./middleware/upload');
 
 const app = express();
 const PORT = 3020;
 
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 const router = express.Router();
