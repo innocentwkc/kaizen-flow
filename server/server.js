@@ -3,6 +3,7 @@
  * It utilizes middleware for handling file uploads and employs CORS for cross-origin requests.
  */
 const path = require('path');
+const fs = require('fs').promises;
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -42,6 +43,26 @@ router.post('/upload', uploadMiddleware, (req, res) => {
 
   res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename });
 });
+
+const directoryPath =  path.join(__dirname, './data/uploads');
+
+router.get('/get-uploads', async (req, res) => {
+  try {
+    const dirList = await fetchDirList(directoryPath);
+    res.json({ fileList: dirList });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to read directory' });
+  }
+})
+
+async function fetchDirList(directoryPath) {
+  try {
+    const dirList = await fs.readdir(directoryPath);
+    return dirList;
+  } catch (error) {
+    throw new Error('Error reading directory:', error);
+  }
+}
 
 // Mount the router at the '/api' path
 app.use('/api', router);
