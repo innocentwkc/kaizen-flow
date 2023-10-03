@@ -2,7 +2,7 @@ name: Deploy to Cpanel production server
 on:
   push:
     branches:
-      - master  # Target Branch, -TODO: Change this to production branch
+      - master  # Target Branch, -TODO: Change this to production branch_
 
 jobs:
   FTP-Deploy-Action:
