@@ -17,8 +17,8 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist
-        server-dir: ./public
+        local-dir: ./dist/
+        server-dir: ./public/
     
     - name: 📂 Sync Backend files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -26,5 +26,5 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./server
+        local-dir: ./server/
         server-dir: ./
