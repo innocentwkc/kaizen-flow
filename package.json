@@ -1,6 +1,11 @@
 {
   "name": "ikigai-flow",
   "version": "0.0.1",
+  "author": {
+    "name": "Innocent W.K Chinyemba",
+    "email": "innocentwkc@gmail.com",
+    "url": "https://innocentwkc.com"
+  },
   "private": true,
   "scripts": {
     "dev": "vite",
