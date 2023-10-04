@@ -1,8 +1,8 @@
 on: 
   push:
     branches:
-      - production
-name: 🚀 Deploy website on push
+      - master
+name: 🚀 Deploy application on push
 jobs:
   web-deploy:
     name: 🎉 Deploy
@@ -11,52 +11,20 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
     
-    - name: 📂 Sync files
+    - name: 📂 Sync frontend files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /
-
-
-# name: Deploy to Cpanel production server
-# on:
-#   push:
-#     branches:
-#       - master  # Target Branch, -TODO: Change this to production branch_
-
-# jobs:
-#   FTP-Deploy-Action:
-#     name: FTP-Deploy-Action
-#     runs-on: ubuntu-latest
-#     steps:
-#     - uses: actions/checkout@v2.1.0
-#       with:
-#         fetch-depth: 2
-#     - name: FTP-Deploy-Action
-#       uses: innocentwkc/kaizen-flow
-#       with:
-#         ftp-server: ${{ secrets.FTP_SERVER }}
-#         ftp-username: ${{ secrets.FTP_USERNAME }}
-#         ftp-password: ${{ secrets.FTP_PASSWORD }}
-  
-  # deploy:
-  #   runs-on: ubuntu-latest
-
-  #   steps:
-  #   - name: Checkout code
-  #     uses: actions/checkout@v2
-
-  #   - name: Setup FTP
-  #     uses: appleboy/ftp-action@master
-  #     with:
-  #       host: ftp.example.com  # Replace with your FTP server hostname
-  #       username: ${{ secrets.FTP_USERNAME }}  # Add FTP username as a secret in your repository
-  #       password: ${{ secrets.FTP_PASSWORD }}  # Add FTP password as a secret in your repository
-  #       port: 21  # FTP port (default is 21)
-  #       local: "."  # Local path to the directory you want to upload
-  #       remote: "/public_html"  # Remote path on the FTP server
-
-  #   - name: List files on FTP server
-  #     run: lftp -e "ls -l; exit" -u ${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }} ftp://ftp.example.com
+        local-dir: ./dist
+        server-dir: ./public
+    
+    - name: 📂 Sync Backend files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: ./server
+        server-dir: ./
