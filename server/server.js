@@ -14,6 +14,10 @@ const app = express();
 // The port on which the server will listen for incoming requests
 const PORT = 3020;
 
+// Configure NODE_ENV variable
+// process.env.NODE_ENV = 'production';
+const isProduction = process.env.NODE_ENV == 'production';
+
 // Enable Cross-Origin Resource Sharing (CORS) for all routes
 app.use(cors());
 
@@ -25,6 +29,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Parse incoming JSON requests
 app.use(express.json());
+
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, isProduction ? 'public' : 'dist')));
 
 const router = express.Router();
 
@@ -64,8 +71,15 @@ async function fetchDirList(directoryPath) {
   }
 }
 
+// Handle every other route with index.html, which will contain your Vue application
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, isProduction ? 'public' : 'dist', 'index.html'));
+});
+
 // Mount the router at the '/api' path
 app.use('/api', router);
+
+console.log('NODE_ENV:', process.env.NODE_ENV);
 
 /**
  * Start the Express server and listen for incoming connections on the specified port.
