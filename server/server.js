@@ -15,7 +15,8 @@ const app = express();
 const PORT = 3020;
 
 // Configure NODE_ENV variable
-process.env.NODE_ENV = 'production';
+// process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'development';
 const isProduction = process.env.NODE_ENV == 'production';
 
 // Enable Cross-Origin Resource Sharing (CORS) for all routes
@@ -53,6 +54,15 @@ router.post('/upload', uploadMiddleware, (req, res) => {
 
 const directoryPath =  path.join(__dirname, './data/uploads');
 
+
+// Handle every other route with index.html, which will contain your Vue application
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, isProduction ? 'public' : 'dist', 'index.html'));
+});
+
+// Mount the router at the '/api' path
+app.use('/api', router);
+
 router.get('/get-uploads', async (req, res) => {
   try {
     const dirList = await fetchDirList(directoryPath);
@@ -71,15 +81,7 @@ async function fetchDirList(directoryPath) {
   }
 }
 
-// Handle every other route with index.html, which will contain your Vue application
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, isProduction ? 'public' : 'dist', 'index.html'));
-});
-
-// Mount the router at the '/api' path
-app.use('/api', router);
-
-console.log('NODE_ENV:', process.env.NODE_ENV);
+// console.log('NODE_ENV:', process.env.NODE_ENV);
 
 /**
  * Start the Express server and listen for incoming connections on the specified port.
