@@ -53,4 +53,17 @@ const upload = multer({ storage });
  */
 const uploadMiddleware = upload.single('pdf');
 
-module.exports = uploadMiddleware;
+// Call next() to proceed to the next middleware or route handler
+const handleFileUpload = (req, res, next) => {
+  uploadMiddleware(req, res, function (err) {
+    if (err instanceof multer.MulterError) {
+      return res.status(400).json({ error: 'Error uploading file: ' + err.message });
+    } else if (err) {
+      return res.status(500).json({ error: 'Error uploading file: ' + err.message });
+    }
+    // No error, proceed to the next middleware or route handler
+    next();
+  });
+};
+
+module.exports = handleFileUpload;

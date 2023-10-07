@@ -8,6 +8,8 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const uploadMiddleware = require('./middleware/upload');
+const { extractPDFInformation } = require('./extractor');
+const { table } = require('console');
 
 const app = express();
 
@@ -32,7 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, isProduction ? 'public' : 'dist')));
+app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dist')));
 
 const router = express.Router();
 
@@ -49,11 +51,12 @@ router.post('/upload', uploadMiddleware, (req, res) => {
     return res.status(400).json({ error: 'No PDF file uploaded' });
   }
 
-  res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename });
+  let tableOfContents = extractPDFInformation(req.file.filename, './server/data/uploads/' + req.file.filename) 
+
+  res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename, tableofcontents: tableOfContents });
 });
 
 const directoryPath =  path.join(__dirname, './data/uploads');
-
 
 // Handle every other route with index.html, which will contain your Vue application
 app.get('*', (req, res) => {
