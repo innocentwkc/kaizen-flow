@@ -38,7 +38,7 @@
     const formData = new FormData();
     formData.append('pdf', pdf.value);
 
-    axios.post('http://localhost:3020/api/upload', formData)
+    axios.post('/api/upload', formData)
       .then(response => {
         response_output.value = `File uploaded successfully. Filename: ${ response.data.filename }`;
       })
