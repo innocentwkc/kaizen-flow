@@ -56,9 +56,10 @@
 
 <style lang="scss">
   .app-navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
+    // width: 250px;
+    // position: fixed;
+    // top: 0;
+    // left: 0;
     z-index: 1001;
   }
 </style>
