@@ -36,6 +36,7 @@ app.use(express.json());
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dist')));
+// app.use('/data', express.static('./data/modules'));
 
 const router = express.Router();
 
