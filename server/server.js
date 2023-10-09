@@ -7,6 +7,7 @@ const fs = require('fs').promises;
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const { folderExists, createFolder } = require('./lib/folderOperations');
 const uploadMiddleware = require('./middleware/upload');
 const { extractPDFInformation } = require('./extractor');
 const { table } = require('console');
@@ -37,6 +38,19 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dist')));
 
 const router = express.Router();
+
+// Run server pre checks by creating data folders
+const foldersToCheck = ['logs', 'modules', 'results', 'uploads'];
+
+for (const folder of foldersToCheck) {
+  const dataPath = path.join(__dirname, `data/${folder}`)
+  if (!folderExists(dataPath)) {
+    createFolder(dataPath);
+  } else {
+    console.log(`Folder already exists at: ${dataPath}`);
+    // Send code to logs and tests
+  }
+}
 
 /**
  * API endpoint to handle PDF file uploads.
