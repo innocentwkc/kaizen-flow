@@ -52,6 +52,40 @@ for (const folder of foldersToCheck) {
   }
 }
 
+router.get('/get-uploads', async (req, res) => {
+  try {
+    const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/uploads'));
+    // const { fileList, directoryList } = await fetchFileAndDirList('./data');
+    res.json({ fileList, directoryList });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to read directory' });
+  }
+});
+
+async function fetchFileAndDirList(directoryPath) {
+  try {
+    const files = [];
+    const directories = [];
+
+    const dirContents = await fs.readdir(directoryPath);
+
+    for (const content of dirContents) {
+      const contentPath = path.join(directoryPath, content);
+      const contentStats = await fs.stat(contentPath);
+
+      if (contentStats.isFile()) {
+        files.push(content);
+      } else if (contentStats.isDirectory()) {
+        directories.push(content);
+      }
+    }
+
+    return { fileList: files, directoryList: directories };
+  } catch (error) {
+    throw new Error('Error reading directory:', error);
+  }
+}
+
 /**
  * API endpoint to handle PDF file uploads.
  *
@@ -70,33 +104,16 @@ router.post('/upload', uploadMiddleware, (req, res) => {
   res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename, tableofcontents: tableOfContents });
 });
 
-const directoryPath =  path.join(__dirname, './data/uploads');
+// Mount the router at the '/api' path
+app.use('/api', router);
+
+// const directoryPath =  path.join(__dirname, './data/uploads');
 
 // Handle every other route with index.html, which will contain your Vue application
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, isProduction ? 'public' : 'dist', 'index.html'));
 });
 
-// Mount the router at the '/api' path
-app.use('/api', router);
-
-router.get('/get-uploads', async (req, res) => {
-  try {
-    const dirList = await fetchDirList(directoryPath);
-    res.json({ fileList: dirList });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to read directory' });
-  }
-})
-
-async function fetchDirList(directoryPath) {
-  try {
-    const dirList = await fs.readdir(directoryPath);
-    return dirList;
-  } catch (error) {
-    throw new Error('Error reading directory:', error);
-  }
-}
 
 // console.log('NODE_ENV:', process.env.NODE_ENV);
 
@@ -108,5 +125,5 @@ async function fetchDirList(directoryPath) {
  * @returns {void}
  */
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port http://localhost:${PORT}`);
 });
