@@ -62,6 +62,16 @@ router.get('/get-uploads', async (req, res) => {
   }
 });
 
+router.get('/get-modules', async (req, res) => {
+  try {
+    const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/modules'));
+    // const { fileList, directoryList } = await fetchFileAndDirList('./data');
+    res.json({ fileList, directoryList });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to read directory' });
+  }
+});
+
 async function fetchFileAndDirList(directoryPath) {
   try {
     const files = [];
