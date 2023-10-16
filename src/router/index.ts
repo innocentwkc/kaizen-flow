@@ -18,33 +18,26 @@ const router = createRouter({
     {
       path: '/saved',
       name: 'saved',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
+      // this generates a separate chunk (Saved.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Saved.vue')
     },
     {
       path: '/calender',
       name: 'calender',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      // this generates a separate chunk (Calender.[hash].js) for this route
       component: () => import('../views/Calender.vue')
     },
     {
       path: '/recent',
       name: 'recent',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      // this generates a separate chunk (Recent.[hash].js) for this route
       component: () => import('../views/Recent.vue')
     },
     {
       path: '/timer',
       name: 'timer',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      // this generates a separate chunk (Timer.[hash].js) for this route
       component: () => import('../views/Timer.vue')
     },
   ]
