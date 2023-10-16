@@ -12,67 +12,80 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+  import { ref, computed, onMounted } from 'vue';
 
-/** Current time remaining in seconds. */
-const time = ref(1500); // 25 minutes in seconds
+  /** Current time remaining in seconds. */
+  const time = ref(600); // NOTE: 10 minutes in seconds
 
-/** Custom time input in minutes. */
-const customTime = ref('');
+  /** Custom time input in minutes. */
+  const customTime = ref('');
 
-/** Flag to indicate if the timer is running. */
-const isRunning = ref(false);
+  /** Flag to indicate if the timer is running. */
+  const isRunning = ref(false);
 
-/** Timer interval. */
-let interval;
+  /** Timer interval. */
+  let interval;
 
-/** Formatted time in mm:ss format. */
-const formattedTime = computed(() => {
-  const minutes = Math.floor(time.value / 60);
-  const seconds = time.value % 60;
-  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-});
+  /** Formatted time in mm:ss format. */
+  const formattedTime = computed(() => {
+    const minutes = Math.floor(time.value / 60);
+    const seconds = time.value % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  });
 
-/**
- * Starts the timer countdown.
- */
-const startTimer = () => {
-  isRunning.value = true;
-  interval = setInterval(() => {
-    if (time.value > 0) {
-      time.value -= 1;
-    } else {
-      stopTimer();
-      alert('Time is up! Take a break.');
+  const audio = new Audio('/assets/sounds/handbell.mp3'); // Declare audio file
+
+  /**
+   * Starts the timer countdown.
+   */
+  const startTimer = () => {
+    isRunning.value = true;
+    interval = setInterval(() => {
+      if (time.value > 0) {
+        time.value -= 1;
+      } else {
+        ringAlarm();
+        stopTimer();
+        alert('Time is up! Take a break.');
+      }
+    }, 1000);
+  };
+
+  /**
+   * Stops the timer.
+   */
+  const stopTimer = () => {
+    isRunning.value = false;
+    clearInterval(interval);
+  };
+
+  /**
+   * Resets the timer to the default time (25 minutes).
+   */
+  const resetTimer = () => {
+    stopTimer();
+    time.value = 1500; // Reset to 25 minutes
+  };
+
+  /**
+   * Sets the timer to the custom time specified by the user.
+   */
+  const setCustomTime = () => {
+    if (customTime.value) {
+      time.value = customTime.value * 60; // Convert minutes to seconds
+      customTime.value = ''; // Clear input after setting the custom time
     }
-  }, 1000);
-};
+  };
 
-/**
- * Stops the timer.
- */
-const stopTimer = () => {
-  isRunning.value = false;
-  clearInterval(interval);
-};
+  const ringAlarm = () => {
+    audio.play().catch(error => {
+      console.error('Error playing audio:', error);
+    });
+  };
 
-/**
- * Resets the timer to the default time (25 minutes).
- */
-const resetTimer = () => {
-  stopTimer();
-  time.value = 1500; // Reset to 25 minutes
-};
-
-/**
- * Sets the timer to the custom time specified by the user.
- */
-const setCustomTime = () => {
-  if (customTime.value) {
-    time.value = customTime.value * 60; // Convert minutes to seconds
-    customTime.value = ''; // Clear input after setting the custom time
-  }
-};
+  onMounted(() => {
+    audio.preload = 'auto'; // Preload the audio when the component is mounted
+  });
 </script>
 
 <style scoped>

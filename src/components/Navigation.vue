@@ -44,7 +44,7 @@
           </router-link>
         </li>
         <li class="border-black mb-2" :class="{ 'border-l-4': isActive('timer') }">
-          <router-link to="/timer" class="py-2 px-3 inline-block w-full h-full text-black font-bold" @click="setActiveLink('popular')">
+          <router-link to="/timer" class="py-2 px-3 inline-block w-full h-full text-black font-bold" @click="setActiveLink('timer')">
             <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
               <path d="M12 22C16.4183 22 20 18.4183 20 14C20 9.58172 16.4183 6 12 6C7.58172 6 4 9.58172 4 14C4 18.4183 7.58172 22 12 22Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M9 2H15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
