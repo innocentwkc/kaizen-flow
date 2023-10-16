@@ -10,7 +10,6 @@ const bodyParser = require('body-parser');
 const { folderExists, createFolder } = require('./lib/folderOperations');
 const uploadMiddleware = require('./middleware/upload');
 const { extractPDFInformation } = require('./extractor');
-const { table } = require('console');
 
 const app = express();
 
