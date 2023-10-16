@@ -17,8 +17,8 @@ const app = express();
 const PORT = 3020;
 
 // Configure NODE_ENV variable
-// process.env.NODE_ENV = 'production';
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'production';
+// process.env.NODE_ENV = 'development';
 const isProduction = process.env.NODE_ENV == 'production';
 
 // Enable Cross-Origin Resource Sharing (CORS) for all routes
