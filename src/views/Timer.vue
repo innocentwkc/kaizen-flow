@@ -1,6 +1,11 @@
 <template>
   <div class="w-full flex flex-col items-center justify-center min-h-screen">
     <h1 class="text-large mb-4">{{ formattedTime }}</h1>
+    <div class="question-count absolute flex items-center justify-center">
+      <h2 class="text-6xl">
+        {{ questionCount }}
+      </h2>
+    </div>
     <div class="mb-4">
       <!-- <div ref="editableTime" contenteditable="true" class="text-6xl mb-4" @blur="updateCustomTime">{{ formattedTime }}</div> -->
       <!-- Custom time input fields -->
@@ -17,13 +22,15 @@
       <button @click="resetTimer" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700">Reset</button>
     </div>
 
-    <!-- Lap counter and button -->
+    <!-- Lap counter, Question Tracker and button -->
     <div class="mt-4">
       <button @click="decrementLap" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">-</button>
       <span class="mx-2 text-lg">Session: {{ lapCount }}</span>
       <button @click="incrementLap" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">+</button>
       <input type="number" v-model="customLap" min="1" placeholder="Custom lap" class="p-2 border rounded mx-2" />
       <button @click="setCustomLap" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Set Session</button>
+      <input type="number" v-model="questionCount" min="1" placeholder="Custom lap" class="p-2 border rounded mx-2" />
+      <button @click="storeQuestionCount" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">No. Questions</button>
     </div>
   </div>
 </template>
@@ -65,8 +72,14 @@
   // Local storage key for lap count
   const localStorageKey = 'pomodoroLapCount';
 
+  // Local storage key for question count
+  const questionCountStorageKey = 'questionCount';
+
   // Ref for lap count
   const lapCount = ref(0);
+
+  // Ref for question count 
+  const questionCount = ref(0);
 
   // Ref for custom lap value
   const customLap = ref(1);
@@ -102,6 +115,13 @@
    */
   const storeLapCount = () => {
     localStorage.setItem(localStorageKey, lapCount.value.toString());
+  };
+
+  /**
+   * Stores the Question count in local storage.
+   */
+  const storeQuestionCount = () => {
+    localStorage.setItem(questionCountStorageKey, questionCount.value.toString());
   };
 
 
@@ -200,10 +220,15 @@
     if (storedLapCount) {
       lapCount.value = parseInt(storedLapCount, 10);
     }
+
+    const storedQuestionCount = localStorage.getItem(questionCountStorageKey);
+    if (storedQuestionCount) {
+      questionCount.value = parseInt(storedQuestionCount, 10);
+    }
   });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* .timer {
   text-align: center;
 }
@@ -211,4 +236,17 @@
 .timer h1 {
   font-size: 3em;
 } */
+
+.question-count{
+  top: 50px;
+  right: 70px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+
+  h2 {
+    font-size:xx-large;
+  }
+}
 </style>
