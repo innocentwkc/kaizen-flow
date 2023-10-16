@@ -43,8 +43,11 @@
     interval = setInterval(() => {
       if (time.value > 0) {
         time.value -= 1;
+
+        if (time.value === 0) { // Ring alarm when display is 00:00
+          ringAlarm();
+        }
       } else {
-        ringAlarm();
         stopTimer();
         alert('Time is up! Take a break.');
       }
