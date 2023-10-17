@@ -1,7 +1,6 @@
 <template>
 	<div class="w-full">
-		<div
-			class="sticky top-0 flex-col p-4 bg-white block sm:flex items-center justify-between border-b dark:bg-gray-800 dark:border-gray-700">
+		<div class="header-wrp sticky top-0 z-30 flex-col p-4 bg-white block sm:flex items-center justify-between border-b dark:bg-gray-800 dark:border-gray-700">
 			<div class="w-full mb-1">
 				<div class="mb-4">
 					<nav class="flex mb-5" aria-label="Breadcrumb">
@@ -100,40 +99,14 @@
 					</button>
 				</div>
 			</div>
-			<table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-				<thead class="sticky top-0 bg-gray-100 dark:bg-gray-700">
-					<tr>
-						<th scope="col" class="p-4">
-							<div class="flex items-center">
-								<input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-									class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:focus:ring-primary-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600">
-								<label for="checkbox-all" class="sr-only">checkbox</label>
-							</div>
-						</th>
-						<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-							Product Name
-						</th>
-						<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-							Technology
-						</th>
-						<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-							Description
-						</th>
-						
-						<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-							Actions
-						</th>
-					</tr>
-				</thead>
-			</table>
-
 		</div>
 		<div class="flex flex-col">
-			<div class="overflow-x-auto">
+			<!-- <div class="overflow-x-auto"> -->
+			<div class="table-wrp block">
 				<div class="inline-block min-w-full align-middle">
-					<div class="overflow-hidden shadow">
-						<table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
-							<thead class="sticky top-0 bg-gray-100 dark:bg-gray-700">
+					<!-- <div class="overflow-hidden shadow"> -->
+						<table class="w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+							<thead class="sticky top-0 bg-gray-100 dark:bg-gray-700 z-25">
 								<tr>
 									<th scope="col" class="p-4">
 										<div class="flex items-center">
@@ -158,7 +131,8 @@
 								</tr>
 							</thead>
 							<tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-								<tr v-for="file in files" class="hover:bg-gray-100 dark:hover:bg-gray-700">
+								<!-- <tr v-for="file in files" class="hover:bg-gray-100 dark:hover:bg-gray-700"> -->
+								<tr v-for="file in 20" class="hover:bg-gray-100 dark:hover:bg-gray-700">
 									<td class="w-4 p-4">
 										<div class="flex items-center">
 											<input id="checkbox-{{ i }}" aria-describedby="checkbox-1" type="checkbox"
@@ -208,7 +182,7 @@
                         {{< /products.inline >}}                        -->
 							</tbody>
 						</table>
-					</div>
+					<!-- </div> -->
 				</div>
 			</div>
 		</div>
@@ -486,10 +460,25 @@ onMounted(async () => {
 
 <style lang="scss">
 
-thead.sticky th {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
+	.header-wrp  {
+		max-height: 28vh;
+	}
+
+	.table-wrp  {
+		max-height: 74vh;
+		overflow-y: scroll;
+		display:block;
+	}
+
+	thead {
+		position:sticky;
+		top:0
+	}
+
+// thead.sticky th {
+//   position: sticky;
+//   top: 0;
+//   z-index: 1;
+// }
 
 </style>
