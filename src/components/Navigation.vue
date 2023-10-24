@@ -1,6 +1,6 @@
 <template>
   <div class="app-navigation flex">
-    <div class="flex-1 h-screen bg-gray-200 py-2 px-4">
+    <div class="flex-1 h-screen bg-gray-200 py-2 px-0.5 pr-2">
       <ul>
         <li class="relative mb-6">
           <!-- <input type="search" class="w-full rounded shadow py-2 px-3 outline-none focus:shadow-outline focus:bg-gray-200" placeholder="Search"> -->
@@ -13,8 +13,8 @@
           <input type="search" name="q" class="w-full rounded shadow py-2 px-3 pl-12 outline-none focus:shadow-outline focus:bg-black-200" placeholder="Search..." autocomplete="off">
         </li>
         <!-- border-l-4 border-black mb-2 -->
-        <li class="border-black mb-2" :class="{ 'border-l-4': isActive('home') }">
-          <router-link to="/" class="py-2 px-3 inline-block w-full h-full font-bold" @click="setActiveLink('home')">
+        <li class="border-black mb-2" :class="{ 'border-l-4': isActive('dashboard') }">
+          <router-link to="/" class="py-2 px-3 inline-block w-full h-full font-bold" @click="setActiveLink('dashboard')">
             <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             Dashboard
           </router-link>
@@ -71,8 +71,12 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+  import { ref, watchEffect } from 'vue';
+  import { useRoute } from 'vue-router'
   import CalenderIcon from './icons/CalenderIcon.vue'
+
+
+  const route = useRoute()
 
   /**
    * Holds the currently active link.
@@ -99,6 +103,19 @@
   const setActiveLink = (link) => {
     activeLink.value = activeLink.value === link ? null : link;
   };
+
+  // Set and watch the active route on page load
+  watchEffect(() => {
+    activeLink.value = route.name
+  })
+
+  // onMounted(() => {
+  //   activeLink.value = route.name
+
+  //   console.log(route.name)
+  //   console.log(activeLink.value)
+
+  // })
 
 </script>
 
