@@ -8,11 +8,11 @@
   },
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "web-app": "vite",
     "build": "run-p build-only",
     "preview": "vite preview",
     "server": "node server/server.js",
-    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "start": "concurrently \"npm:web-app\" \"npm:server\"",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
