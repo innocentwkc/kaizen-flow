@@ -31,8 +31,8 @@ const storage = multer.diskStorage({
    * @returns {void}
    */
   filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9); // TODO: use username custom file name
-    cb(null, 'pdf-' + uniqueSuffix + path.extname(file.originalname));
+    const uniqueSuffix = Math.round(Math.random() * 1e9); // TODO: use username custom file name
+    cb(null, 'module-' + uniqueSuffix + path.extname(file.originalname));
   }
 });
 
