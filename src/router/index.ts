@@ -16,11 +16,11 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue')
     },
     {
-      path: '/saved',
-      name: 'saved',
+      path: '/uploads',
+      name: 'uploads',
       // this generates a separate chunk (Saved.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/Saved.vue')
+      component: () => import('../views/Uploads.vue')
     },
     {
       path: '/calender',
