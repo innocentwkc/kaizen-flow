@@ -35,7 +35,11 @@ app.use(express.json());
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dist')));
-// app.use('/data', express.static('./data/modules'));
+
+// Define a public path for the "data/modules" directory
+const publicPath = path.join(__dirname, 'data', 'modules');
+
+app.use('/data/modules', express.static(publicPath));
 
 const router = express.Router();
 
@@ -63,13 +67,27 @@ router.get('/get-uploads', async (req, res) => {
 });
 
 router.get('/get-modules', async (req, res) => {
-  try {
-    const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/modules'));
-    // const { fileList, directoryList } = await fetchFileAndDirList('./data');
-    res.json({ fileList, directoryList });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to read directory' });
+  const { file } = req.query;
+
+  if (!file) {
+    try {
+      const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/modules'));
+
+      return res.json({ fileList, directoryList });
+    } catch (error) {
+      return res.status(500).json({ error: 'Failed to read directory' });
+    }
   }
+
+  const filePath = path.join(publicPath, file);
+
+   try {
+    await fs.access(filePath);
+    res.sendFile(filePath);
+  } catch (error) {
+    res.status(404).json({ error: 'File not found.', details: error });
+  }
+
 });
 
 async function fetchFileAndDirList(directoryPath) {
@@ -111,7 +129,7 @@ router.post('/upload', uploadMiddleware, (req, res) => {
 
   let tableOfContents = extractPDFInformation(req.file.filename, './server/data/uploads/' + req.file.filename) 
 
-  res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename, tableofcontents: tableOfContents });
+  res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename + '.json', tableofcontents: tableOfContents });
 });
 
 // Mount the router at the '/api' path
