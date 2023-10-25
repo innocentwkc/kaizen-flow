@@ -14,7 +14,7 @@ const { extractPDFInformation } = require('./extractor');
 const app = express();
 
 // The port on which the server will listen for incoming requests
-const PORT = 3020;
+const PORT = 5001;
 
 // Configure NODE_ENV variable
 // process.env.NODE_ENV = 'production';
