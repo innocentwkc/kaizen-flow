@@ -40,7 +40,7 @@ app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dis
 const router = express.Router();
 
 // Run server pre checks by creating data folders
-const foldersToCheck = ['logs', 'modules', 'results', 'uploads'];
+const foldersToCheck = ['calenders', 'logs', 'modules', 'results', 'uploads'];
 
 for (const folder of foldersToCheck) {
   const dataPath = path.join(__dirname, `data/${folder}`)
