@@ -4,6 +4,7 @@
  */
 const path = require('path');
 const fs = require('fs').promises;
+const kleur = require('kleur');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
@@ -153,5 +154,6 @@ app.get('*', (req, res) => {
  * @returns {void}
  */
 app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
+  console.log('\n');
+  console.log(`   ${kleur.green('➜')}  ${kleur.bold().yellow('API Server')}:   ${kleur.cyan('http://localhost:' + kleur.bold(PORT))}/`);
 });
