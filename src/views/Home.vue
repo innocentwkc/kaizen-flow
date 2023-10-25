@@ -19,7 +19,7 @@
             File uploaded successfully.
           </div>
           <span class="font-semibold">Filename: &nbsp;</span>
-          <a class="no-underline hover:underline text-cyan-500 dark:text-cyan-500" :href="'http://localhost:3020/api/get-modules?file=' + response_output" target="_blank">
+          <a class="no-underline hover:underline text-cyan-500 dark:text-cyan-500" :href="'http://localhost:5001/api/get-modules?file=' + response_output" target="_blank">
              {{ response_output }}
           </a>
         </div>
@@ -55,7 +55,7 @@
     const formData = new FormData();
     formData.append('pdf', pdf.value);
 
-    axios.post('http://localhost:3020/api/upload', formData)
+    axios.post('http://localhost:5001/api/upload', formData)
       .then(response => {
         // let json_file_name = (response.data.filename).split('.')[0] + '.json'
 
