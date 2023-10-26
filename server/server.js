@@ -155,5 +155,5 @@ app.get('*', (req, res) => {
  */
 app.listen(PORT, () => {
   console.log('\n');
-  console.log(`   ${kleur.green('➜')}  ${kleur.bold().yellow('API Server')}:   ${kleur.cyan(`http://localhost:${ kleur.bold(PORT) }/`)}`);
-});
+  console.log(`   ${kleur.green('➜')}  ${kleur.bold().yellow('API Server')}:   ${kleur.cyan(`http://localhost:${ kleur.bold(PORT) }/`)}`); 
+}); 
