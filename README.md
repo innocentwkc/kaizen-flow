@@ -1,6 +1,6 @@
 # Kaizen-flow
 
-This template should help get you started developing with Vue 3 in Vite.
+This was built with  a vite template for VueJS 3.
 
 ## Recommended IDE Setup
 
