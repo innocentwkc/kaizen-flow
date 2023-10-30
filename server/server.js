@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Parse incoming JSON requests
+// TODO: create other public paths for static assets
 app.use(express.json());
 
 // Serve static files from the dist directory
