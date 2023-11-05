@@ -11,7 +11,7 @@
     "web-app": "vite",
     "build": "run-p build-only",
     "preview": "vite preview",
-    "server": "node server/server.js",
+    "server": "node server",
     "start": "concurrently \"npm:web-app\" \"npm:server\"",
     "test:unit": "vitest",
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
