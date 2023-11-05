@@ -11,6 +11,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { folderExists, createFolder } = require('./lib/folderOperations');
 const icsCreator = require('./lib/scheduler/ics.creator');
+const icsParser = require('./lib/scheduler/ics.parser');
 const uploadMiddleware = require('./middleware/upload');
 const { extractPDFInformation } = require('./extractor');
 
@@ -74,35 +75,43 @@ router.get('/get-uploads', async (req, res) => {
 });
 
 /**
- * API endpoint to retrieve the list of modules or a specific module file.
- * @name get-modules
- * @path {GET} /get-modules
- * @query {string} [file] Optional. The specific module file to retrieve.
- * @response {object} JSON response containing the lists of module files and directories, or the content of a specific file.
+ * API endpoint to retrieve the list of modules or calenders or a specific file from either.
+ * @name get-resources
+ * @path {GET} /get-resources
+ * @query {string} type Required. The type of resource to retrieve ('modules' or 'calenders').
+ * @query {string} [file] Optional. The specific file to retrieve.
+ * @response {object} JSON response containing the lists of files and directories, or the content of a specific file.
  */
-router.get('/get-modules', async (req, res) => {
-  const { file } = req.query;
+router.get('/get-resources', async (req, res) => {
+  const { type, file } = req.query;
+
+  // Validate the type parameter
+  if (type !== 'module' && type !== 'calender') {
+    return res.status(400).json({ error: 'Invalid type parameter. Must be either "module" or "calender".' });
+  }
+
+  const basePath = type === 'module' ? './data/modules' : './data/calenders';
+  const fullPath = path.join(__dirname, basePath);
 
   if (!file) {
     try {
-      const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/modules'));
-
+      const { fileList, directoryList } = await fetchFileAndDirList(fullPath);
       return res.json({ fileList, directoryList });
     } catch (error) {
       return res.status(500).json({ error: 'Failed to read directory' });
     }
   }
 
-  const filePath = path.join(publicPath, file);
+  const filePath = path.join(fullPath, file);
 
-   try {
+  try {
     await fs.access(filePath);
     res.sendFile(filePath);
   } catch (error) {
     res.status(404).json({ error: 'File not found.', details: error });
   }
-
 });
+
 
 /**
  * Fetches the file and directory list from a given directory.
@@ -179,6 +188,39 @@ router.post('/generate-ics', async (req, res) => {
     // Generate the ICS file
     icsCreator(tableOfContents, savePath);
     res.json({ message: 'ICS file generated successfully', icsFilename: savePath });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+/**
+ * API endpoint to serve ICS file events.
+ * @name /get-ics-events/:filename
+ * @path {GET} /get-ics-events/:filename
+ * @param {string} filename The name of the ICS file to retrieve events from.
+ * @response {object} JSON response containing the events or indicating the failure of the retrieval.
+ */
+router.get('/get-ics-events/:filename', async (req, res) => {
+  try {
+    const { filename } = req.params;
+    let icsFilePath = path.join(__dirname, `./data/calenders/${filename}`);
+
+    // Check if the ICS file exists
+    try {
+      await fs.access(icsFilePath);
+    } catch (err) {
+      return res.status(404).json({ error: 'ICS file not found' });
+    }
+
+    // Read the ICS file content
+    const icsData = await fs.readFile(icsFilePath, 'utf8');
+    
+    // Parse the ICS file content to get events
+    const events = icsParser(icsData);
+    
+    // Return the events in the response
+    res.json({ events });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Internal Server Error' });

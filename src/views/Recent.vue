@@ -18,7 +18,7 @@ const files = ref('')
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:5001/api/get-modules');
+    const response = await axios.get('http://localhost:5001/api/get-resources?type=module');
     files.value = response.data.fileList
     console.log(response.data.fileList)
   } catch (error) {

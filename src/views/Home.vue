@@ -19,7 +19,7 @@
             File uploaded successfully.
           </div>
           <span class="font-semibold">Filename: &nbsp;</span>
-          <a class="no-underline hover:underline text-cyan-500 dark:text-cyan-500" :href="'http://localhost:5001/api/get-modules?file=' + response_output" target="_blank">
+          <a class="no-underline hover:underline text-cyan-500 dark:text-cyan-500" :href="'http://localhost:5001/api/get-resources?type=module&file=' + response_output" target="_blank">
              {{ response_output }}
           </a>
         </div>
