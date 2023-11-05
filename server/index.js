@@ -4,7 +4,7 @@
  */
 
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const kleur = require('kleur');
 const express = require('express');
 const cors = require('cors');
@@ -166,12 +166,14 @@ router.post('/generate-ics', async (req, res) => {
     let jsonFilePath = path.join(__dirname, `./data/modules/${filename}`)
 
     // Check if the JSON file exists
-    if (!fs.existsSync(jsonFilePath)) {
+    try {
+      await fs.access(jsonFilePath);
+    } catch (err) {
       return res.status(404).json({ error: 'JSON file not found' });
     }
 
     // Read the JSON file
-    const data = fs.readFileSync(jsonFilePath, 'utf8');
+    const data = await fs.readFile(jsonFilePath, 'utf8');
     const tableOfContents = JSON.parse(data);
 
     // Generate the ICS file
