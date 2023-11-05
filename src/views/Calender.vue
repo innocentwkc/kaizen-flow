@@ -1,7 +1,7 @@
 <template>
   <div class="w-full p-2">
     <div class='calendar-container'>
-      <FullCalendar :options="calendarOptions" />
+      <FullCalendar class="" :options="calendarOptions" />
     </div>
   </div>
 </template>
@@ -98,22 +98,25 @@ const calendarOptions = ref({
 });
 </script>
 
-<style scoped lang="scss">
-// @import 'fullcalendar.min.css';
-// @import 'fullcalendar.print.min.css' print;
+<style lang="scss">
 
 .calendar-container {
   // @apply max-w-5xl mx-auto my-10;
 }
 
-body {
-  // @apply m-10 p-0 font-sans text-base;
+.fc.fc-media-screen {
+  height: 98vh !important;
+}
+
+.fc-header-toolbar {
+  position: sticky !important;
+// fc-toolbar fc-toolbar-ltr
 }
 
 td {
   &.fc-day {
     &:hover {
-      background: red !important;
+      background: rgba(79, 130, 153, 0.1) !important;
     }
   }
 }
