@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+  <main class="w-full flex flex-col items-center justify-center min-h-screen bg-gray-100">
     <div class="max-w-md mx-auto p-6 bg-white rounded shadow-lg">
       <h1 class="text-2xl font-bold mb-4">Upload PDF</h1>
       <form @submit.prevent="uploadPdf" enctype="multipart/form-data">
@@ -13,7 +13,23 @@
           Upload PDF
         </button>
       </form>
-      <div v-if="response_output" class="mt-4 text-green-700">{{ response_output }}</div>
+      <div v-if="response_output" class="mt-4">
+        <div v-if="response_success">
+          <div>
+            File uploaded successfully.
+          </div>
+          <span class="font-semibold">Filename: &nbsp;</span>
+          <a class="no-underline hover:underline text-cyan-500 dark:text-cyan-500" :href="'http://localhost:5001/api/get-resources?type=module&file=' + response_output" target="_blank">
+             {{ response_output }}
+          </a>
+        </div>
+        <div v-else>
+          <span>
+            Error:
+          </span>
+            {{ response_output }}
+        </div>
+      </div>
     </div>
   </main>
 </template>
@@ -24,6 +40,7 @@
 
   const pdf = ref(null);
   const response_output = ref(null);
+  const response_success = ref(false);
 
   const handleFileUpload = (event) => {
     pdf.value = event.target.files[0];
@@ -38,11 +55,17 @@
     const formData = new FormData();
     formData.append('pdf', pdf.value);
 
-    axios.post('http://localhost:3020/api/upload', formData)
+    axios.post('http://localhost:5001/api/upload', formData)
       .then(response => {
-        response_output.value = `File uploaded successfully. Filename: ${ response.data.filename }`;
+        // let json_file_name = (response.data.filename).split('.')[0] + '.json'
+
+        // console.log(json_file)
+
+        response_success.value = true;
+        response_output.value = response.data.filename;
       })
       .catch(error => {
+        response_success.value = false;
         response_output.value = `Error uploading file: ${ error.message }`;
       });
   };

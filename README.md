@@ -1,62 +1,140 @@
-# Kaizen-flow
+# Kaizen Flow
 
-This template should help get you started developing with Vue 3 in Vite.
+Kaizen Flow is a robust web application designed to streamline workflow and productivity. Built with Vue 3, it incorporates a suite of tools and libraries to provide a seamless user experience.
 
-## Recommended IDE Setup
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Author](#author)
+3. [Scripts](#scripts)
+   - [web-app](#web-app)
+   - [build](#build)
+   - [preview](#preview)
+   - [server](#server)
+   - [start](#start)
+   - [test:unit](#testunit)
+   - [test:e2e](#teste2e)
+   - [test:e2e:dev](#teste2edev)
+   - [build-only](#build-only)
+   - [type-check](#type-check)
+4. [Dependencies](#dependencies)
+5. [DevDependencies](#devdependencies)
+6. [Contributing](#contributing)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Introduction
+<a id="introduction"></a>
+Welcome to the "Kaizen Flow" project, a web application designed for efficiency and productivity. This project leverages modern web technologies to create a seamless and dynamic user experience.
 
-## Type Support for `.vue` Imports in TS
+## Author
+<a id="author"></a>
+**Innocent W.K. Chinyemba**
+- Email: [innocentwkc@gmail.com](mailto:innocentwkc@gmail.com)
+- Website: [https://innocentwkc.com](https://innocentwkc.com)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Scripts
+<a id="scripts"></a>
+Below are the scripts defined in the `package.json` file for various tasks required during development, testing, and deployment.
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+### web-app
+<a id="web-app"></a>
+Starts the Vite development server for the front-end application.
+```bash
+npm run web-app
 ```
 
-### Compile and Hot-Reload for Development
+### build
 
-```sh
-npm run dev
-```
+<a id="build"></a>
+Runs the build-only script to create a production build of the application.
 
-### Type-Check, Compile and Minify for Production
-
-```sh
+```bash
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### preview
 
-```sh
+<a id="preview"></a>
+Serves the production build locally for preview purposes.
+
+```bash
+npm run preview
+```
+
+### server
+
+<a id="server"></a>
+Launches the Node.js server found in the server/server.js file.
+
+```bash
+npm run server
+```
+
+### start
+
+<a id="start"></a>
+Concurrently runs both the Vite development server and the Node.js server.
+
+```bash
+npm run start
+```
+
+### test:unit
+
+<a id="testunit"></a>
+Executes unit tests using Vitest.
+
+```bash
 npm run test:unit
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
-```sh
+### test:e2e
+
+<a id="teste2e"></a>
+Runs end-to-end tests by starting the preview server and then executing Cypress tests.
+
+```bash
+npm run test:e2e
+```
+
+
+### test:e2e:dev
+
+<a id="teste2edev"></a>
+Runs end-to-end tests in development mode by starting the development server and opening Cypress in interactive mode.
+
+```bash
 npm run test:e2e:dev
 ```
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+### build-only
 
-```sh
-npm run build
-npm run test:e2e
+<a id="build-only"></a>
+Builds the application for production deployment without running additional scripts.
+
+```bash
+npm run build-only
 ```
+### type-check
+
+<a id="type-check"></a>
+Performs a TypeScript type check on the project.
+
+```bash
+npm run type-check
+```
+
+## Dependencies
+
+<a id="dependencies"></a>
+A list of production dependencies required for the application to run. These include frameworks, libraries, and other tools used in the project.
+DevDependencies
+
+<a id="devdependencies"></a>
+Development dependencies are required only during the development process, not in the production environment. This includes testing frameworks, build tools, and other utilities.
+Contributing
+
+<a id="contributing"></a>
+Contributions are always welcome! If you're interested in contributing, please read the contributing guide and follow the project's code of conduct.
+
+

@@ -6,6 +6,11 @@
         {{ questionCount }}
       </h2>
     </div>
+    <div class="remaining-question-count absolute  flex items-center justify-center">
+      <h2 class="text-6xl">
+        {{ questionCount }}
+      </h2>
+    </div>
     <div class="mb-4">
       <!-- <div ref="editableTime" contenteditable="true" class="text-6xl mb-4" @blur="updateCustomTime">{{ formattedTime }}</div> -->
       <!-- Custom time input fields -->
@@ -237,13 +242,29 @@
   font-size: 3em;
 } */
 
-.question-count{
+.question-count {
+  color: green;
   top: 50px;
   right: 70px;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 1px solid black;
+
+  h2 {
+    font-size:xx-large;
+  }
+}
+
+.remaining-question-count {
+  color: red;
+  top: 180px;
+  right: 70px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid black;
+  z-index: 100;
 
   h2 {
     font-size:xx-large;

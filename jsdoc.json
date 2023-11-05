@@ -1,0 +1,14 @@
+{
+  "source": {
+    "include": ["server"],
+    "includePattern": ".+\\.(js)$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "plugins": [],
+  "opts": {
+    "encoding": "utf8",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  }
+}
