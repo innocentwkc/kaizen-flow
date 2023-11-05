@@ -4,12 +4,13 @@
  */
 
 const path = require('path');
-const fs = require('fs').promises;
+const fs = require('fs');
 const kleur = require('kleur');
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { folderExists, createFolder } = require('./lib/folderOperations');
+const icsCreator = require('./lib/scheduler/ics.creator');
 const uploadMiddleware = require('./middleware/upload');
 const { extractPDFInformation } = require('./extractor');
 
@@ -149,6 +150,39 @@ router.post('/upload', uploadMiddleware, (req, res) => {
 
   res.json({ message: 'PDF file uploaded successfully', filename: req.file.filename + '.json', tableofcontents: tableOfContents });
 });
+
+/**
+ * API endpoint to handle ICS file generation from JSON.
+ * @name /generate-ics
+ * @path {POST} /generate-ics
+ * @body {string} filename The name of the JSON file containing the table of contents.
+ * @body {string} icsSavePath The path where the ICS file should be saved.
+ * @response {object} JSON response indicating the success or failure of the ICS file generation.
+ */
+router.post('/generate-ics', async (req, res) => {
+  try {
+    const { filename } = req.body;
+    let savePath = path.join(__dirname, `./data/calenders/${filename}.ics`)
+    let jsonFilePath = path.join(__dirname, `./data/modules/${filename}`)
+
+    // Check if the JSON file exists
+    if (!fs.existsSync(jsonFilePath)) {
+      return res.status(404).json({ error: 'JSON file not found' });
+    }
+
+    // Read the JSON file
+    const data = fs.readFileSync(jsonFilePath, 'utf8');
+    const tableOfContents = JSON.parse(data);
+
+    // Generate the ICS file
+    icsCreator(tableOfContents, savePath);
+    res.json({ message: 'ICS file generated successfully', icsFilename: savePath });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 
 // Mount the router at the '/api' path
 app.use('/api', router);
