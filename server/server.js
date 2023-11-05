@@ -1,7 +1,8 @@
 /**
- * This script sets up an Express server to handle API requests for PDF file uploads.
+ * @file This script sets up an Express server to handle API requests for PDF file uploads.
  * It utilizes middleware for handling file uploads and employs CORS for cross-origin requests.
  */
+
 const path = require('path');
 const fs = require('fs').promises;
 const kleur = require('kleur');
@@ -14,42 +15,39 @@ const { extractPDFInformation } = require('./extractor');
 
 const app = express();
 
-// The port on which the server will listen for incoming requests
-const PORT = 5001;
+/** @const {number} SERVER_PORT - The port on which the server will listen for incoming requests */
+const SERVER_PORT = 5001;
 
-// Configure NODE_ENV variable
+/** Configure NODE_ENV variable */
 // process.env.NODE_ENV = 'production';
 process.env.NODE_ENV = 'development';
 const isProduction = process.env.NODE_ENV == 'production';
 
-// Enable Cross-Origin Resource Sharing (CORS) for all routes
+/** Enable Cross-Origin Resource Sharing (CORS) for all routes */
 app.use(cors());
 
-// Parse incoming JSON requests
+/** Parse incoming JSON requests */
 app.use(bodyParser.json());
 
-// Parse URL-encoded requests
+/** Parse URL-encoded requests */
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Parse incoming JSON requests
-// TODO: create other public paths for static assets
-app.use(express.json());
-
-// Serve static files from the dist directory
+/** Serve static files from the dist directory */
 app.use(express.static(path.join(__dirname, "..", isProduction ? 'public' : 'dist')));
 
-// Define a public path for the "data/modules" directory
+/** Define a public path for the "data/modules" directory */
 const publicPath = path.join(__dirname, 'data', 'modules');
-
 app.use('/data/modules', express.static(publicPath));
 
 const router = express.Router();
 
-// Run server pre checks by creating data folders
+/** 
+ * Run server pre-checks by creating data folders.
+ * @param {string[]} foldersToCheck - The folders to check and create if not exist.
+ */
 const foldersToCheck = ['calenders', 'logs', 'modules', 'results', 'uploads'];
-
 for (const folder of foldersToCheck) {
-  const dataPath = path.join(__dirname, `data/${folder}`)
+  const dataPath = path.join(__dirname, `data/${folder}`);
   if (!folderExists(dataPath)) {
     createFolder(dataPath);
   } else {
@@ -58,6 +56,12 @@ for (const folder of foldersToCheck) {
   }
 }
 
+/**
+ * API endpoint to retrieve the list of uploaded files.
+ * @name get-uploads
+ * @path {GET} /get-uploads
+ * @response {object} JSON response containing the lists of files and directories.
+ */
 router.get('/get-uploads', async (req, res) => {
   try {
     const { fileList, directoryList } = await fetchFileAndDirList(path.join(__dirname, './data/uploads'));
@@ -68,6 +72,13 @@ router.get('/get-uploads', async (req, res) => {
   }
 });
 
+/**
+ * API endpoint to retrieve the list of modules or a specific module file.
+ * @name get-modules
+ * @path {GET} /get-modules
+ * @query {string} [file] Optional. The specific module file to retrieve.
+ * @response {object} JSON response containing the lists of module files and directories, or the content of a specific file.
+ */
 router.get('/get-modules', async (req, res) => {
   const { file } = req.query;
 
@@ -92,6 +103,12 @@ router.get('/get-modules', async (req, res) => {
 
 });
 
+/**
+ * Fetches the file and directory list from a given directory.
+ * @param {string} directoryPath - The path to the directory.
+ * @throws {Error} If the directory cannot be read.
+ * @returns {object} An object containing arrays of file names and directory names.
+ */
 async function fetchFileAndDirList(directoryPath) {
   try {
     const files = [];
@@ -118,11 +135,10 @@ async function fetchFileAndDirList(directoryPath) {
 
 /**
  * API endpoint to handle PDF file uploads.
- *
- * @param {string} '/upload' - The route for handling file uploads.
- * @param {function} uploadMiddleware - Middleware function for handling file uploads.
- * @param {function} (req, res) - Callback function to handle the POST request.
- * @returns {object} - JSON response indicating success or failure of the upload.
+ * @name /upload
+ * @path {POST} /upload
+ * @middleware {function} uploadMiddleware Middleware function for handling file uploads.
+ * @response {object} JSON response indicating the success or failure of the upload.
  */
 router.post('/upload', uploadMiddleware, (req, res) => {
   if (!req.file) {
@@ -139,7 +155,7 @@ app.use('/api', router);
 
 // const directoryPath =  path.join(__dirname, './data/uploads');
 
-// Handle every other route with index.html, which will contain your Vue application
+// Handle every other route with index.html, which will render the Vue application
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, isProduction ? 'public' : 'dist', 'index.html'));
 });
@@ -150,11 +166,11 @@ app.get('*', (req, res) => {
 /**
  * Start the Express server and listen for incoming connections on the specified port.
  *
- * @param {number} PORT - The port number on which the server will listen for requests.
+ * @param {number} SERVER_PORT - The port number on which the server will listen for requests.
  * @param {function} () - Callback function to be executed once the server starts.
  * @returns {void}
  */
-app.listen(PORT, () => {
+app.listen(SERVER_PORT, () => {
   console.log('\n');
-  console.log(`   ${kleur.green('➜')}  ${kleur.bold().yellow('API Server')}:   ${kleur.cyan(`http://localhost:${ kleur.bold(PORT) }/`)}`); 
+  console.log(`${kleur.green('➜')}  ${kleur.bold().yellow('API Server')}:   ${kleur.cyan(`http://localhost:${ kleur.bold(SERVER_PORT) }/`)}`); 
 }); 
