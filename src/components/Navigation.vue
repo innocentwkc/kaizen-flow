@@ -19,15 +19,14 @@
             Dashboard
           </router-link>
         </li>
-        <li class="border-black mb-2" :class="{ 'border-l-4': isActive('recent') }">
+        <!-- <li class="border-black mb-2" :class="{ 'border-l-4': isActive('recent') }">
           <router-link to="/recent" class="py-2 px-3 inline-block w-full h-full text-black font-bold" @click="setActiveLink('recent')">
-            <!-- <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> -->
-            <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" viewBox="0 0 24 24" stroke="currentColor">
+             <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" viewBox="0 0 24 24" stroke="currentColor">
               <path id="Shape" d="M9.682,18.75a.75.75,0,0,1,.75-.75,8.25,8.25,0,1,0-6.189-2.795V12.568a.75.75,0,0,1,1.5,0v4.243a.75.75,0,0,1-.751.75H.75a.75.75,0,0,1,0-1.5H3a9.75,9.75,0,1,1,7.433,3.44A.75.75,0,0,1,9.682,18.75Zm2.875-4.814L9.9,11.281a.754.754,0,0,1-.22-.531V5.55a.75.75,0,1,1,1.5,0v4.889l2.436,2.436a.75.75,0,1,1-1.061,1.06Z" transform="translate(1.568 2.25)" fill="#141124"/>
             </svg>
             Recent
           </router-link>
-        </li>
+        </li> -->
         <li class="border-black mb-2" :class="{ 'border-l-4': isActive('calender') }">
           <router-link to="/calender" class="py-2 px-3 inline-block w-full h-full text-black font-bold" @click="setActiveLink('calender')">
             <!-- <svg class="inline h-6 w-6 -mt-1 mr-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg> -->
