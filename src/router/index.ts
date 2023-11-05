@@ -23,7 +23,7 @@ const router = createRouter({
       component: () => import('../views/Uploads.vue')
     },
     {
-      path: '/calender',
+      path: '/calender/:filename?',
       name: 'calender',
       // this generates a separate chunk (Calender.[hash].js) for this route
       component: () => import('../views/Calender.vue')

@@ -13,12 +13,22 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { computed, ref, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios'
 import FullCalendar from '@fullcalendar/vue3';
 import dayGridPlugin from '@fullcalendar/daygrid'; // import this if you need dayGrid
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable
 import timeGridPlugin from '@fullcalendar/timegrid'; // for timeGrid views
+
+
+const route = useRoute();
+
+// Accessing the filename parameter
+const filename = computed(() => route.params.filename || 'No user ID provided');
+
+// Keeping the original path
+const originalPath = computed(() => route.path);
 
 const calendarOptions = ref({
   plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
@@ -75,7 +85,23 @@ async function fetchCalendarEvents() {
   }
 }
 
-onMounted(fetchFiles);
+onMounted(() => {
+  fetchFiles() // fetch list of files
+  selectedFile.value = filename.value
+  // console.log(filename.value)
+  // setTimeout(() => {
+    fetchCalendarEvents()
+  // }, 1500);
+});
+
+watch(selectedFile, (newFiles) => {
+  // Set the selected file to the first file if available
+  // if (newFiles.length > 0) {
+  //   selectedFile.value = newFiles[0];
+  // }
+
+  console.log(newFiles)
+})
 
 </script>
 

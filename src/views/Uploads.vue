@@ -104,13 +104,13 @@
 										</div>
 									</th>
 									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-										Title
+										Data
 									</th>
 									<!-- <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
 										Category
 									</th> -->
 									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
-										Description
+										Calender Link
 									</th>
 									
 									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
@@ -136,7 +136,8 @@
 										{{ '.technology'}}
 									</td> -->
 									<td	class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
-										{{ 'JSON File' }}
+										<!-- {{ 'JSON File' }} -->
+										<router-link :to="'/calender/'+ file + '.ics'"> {{ file.split('.').shift() }} </router-link>
 									</td>
 									<td class="p-4 space-x-2 whitespace-nowrap">
 										<button type="button" id="updateProductButton" @click="createCalender(file)" data-drawer-target="drawer-update-product-default"
