@@ -106,9 +106,9 @@
 									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
 										Title
 									</th>
-									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
+									<!-- <th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
 										Category
-									</th>
+									</th> -->
 									<th scope="col" class="p-4 text-xs font-medium text-left text-gray-500 uppercase dark:text-gray-400">
 										Description
 									</th>
@@ -132,14 +132,14 @@
 										<div class="text-base font-semibold text-gray-900 dark:text-white">{{ file }}</div>
 										<div class="text-sm font-normal text-gray-500 dark:text-gray-400">{{ 'Created Date' }}</div>
 									</td>
-									<td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
+									<!-- <td class="p-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
 										{{ '.technology'}}
-									</td>
+									</td> -->
 									<td	class="max-w-sm p-4 overflow-hidden text-base font-normal text-gray-500 truncate xl:max-w-xs dark:text-gray-400">
-										{{ '.description' }}
+										{{ 'JSON File' }}
 									</td>
 									<td class="p-4 space-x-2 whitespace-nowrap">
-										<button type="button" id="updateProductButton" data-drawer-target="drawer-update-product-default"
+										<button type="button" id="updateProductButton" @click="createCalender(file)" data-drawer-target="drawer-update-product-default"
 											data-drawer-show="drawer-update-product-default" aria-controls="drawer-update-product-default"
 											data-drawer-placement="right"
 											class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
@@ -150,7 +150,7 @@
 													d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
 													clip-rule="evenodd"></path>
 											</svg>
-											Update
+											Add to Calender
 										</button>
 										<button type="button" id="deleteProductButton" data-drawer-target="drawer-delete-product-default"
 											data-drawer-show="drawer-delete-product-default" aria-controls="drawer-delete-product-default"
@@ -229,11 +229,30 @@ import axios from 'axios';
 
 const files = ref('')
 
+const createCalender = async (file) => {
+
+	// let filename = file
+
+	try {
+		const response = await axios.post('http://localhost:5001/api/generate-ics', {
+			filename: file
+		});
+
+		// files.value = response.data.fileList
+		console.log(response.data)
+	} catch (error) {
+		console.error('Error:', error);
+		files.value = 'An error occurred while fetching data.'
+	}
+	
+	// console.log('create calener', file)
+}
+
 onMounted(async () => {
 	try {
 		const response = await axios.get('http://localhost:5001/api/get-resources?type=module');
 		files.value = response.data.fileList
-		console.log(response.data.fileList)
+		// console.log(response.data.fileList)
 	} catch (error) {
 		console.error('Error:', error);
 		files.value = 'An error occurred while fetching data.'
