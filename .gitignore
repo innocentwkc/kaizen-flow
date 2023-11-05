@@ -29,3 +29,5 @@ coverage
 # Ignore server test data
 /server/test-data
 /server/data/*
+
+docs
