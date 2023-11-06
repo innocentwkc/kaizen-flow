@@ -4,7 +4,12 @@
  * It returns an object containing the parsed units and sub-chapters.
  * 
  * @param {string} text - The text content to be parsed.
- * @return {object} An object containing the parsed units and sub-chapters.
+ * @return {Object} An object containing the parsed units and sub-chapters.
+ * @return {Object[]} result.units - An array of unit objects.
+ * @return {string} result.units[].unitNumber - The unit number.
+ * @return {Object[]} result.units[].subChapters - An array of sub-chapters for the unit.
+ * @return {string} result.units[].subChapters[].subChapterNumber - The sub-chapter number.
+ * @return {string} result.units[].subChapters[].subChapterTitle - The sub-chapter title.
  */
 module.exports = function parseChapters(text) {
   // Initialize an array to store parsed units.

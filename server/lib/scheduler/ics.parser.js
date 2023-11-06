@@ -1,6 +1,17 @@
-// ics.parser.js
+/**
+ * ics.parser.js
+ * A module for parsing ICS (iCalendar) data.
+ * @module ics-parser
+ */
+
 const moment = require('moment-timezone'); // Make sure to install moment-timezone
 
+/**
+ * Parses ICS (iCalendar) data and converts it into an array of event objects.
+ *
+ * @param {string} icsData - The ICS data as a string.
+ * @returns {Object[]} An array of event objects parsed from the ICS data.
+ */
 function parseICS(icsData) {
   const lines = icsData.split(/\r\n|\n|\r/);
   const events = [];
