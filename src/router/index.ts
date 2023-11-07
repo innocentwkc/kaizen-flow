@@ -11,11 +11,6 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
-    },
-    {
       path: '/uploads',
       name: 'uploads',
       // this generates a separate chunk (Saved.[hash].js) for this route
