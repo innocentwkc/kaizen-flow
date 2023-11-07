@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-// import HomeView from '../views/HomeView.vue'
 import HomePage from '../views/Home.vue'
 
 const router = createRouter({
@@ -34,12 +33,12 @@ const router = createRouter({
       // this generates a separate chunk (Recent.[hash].js) for this route
       component: () => import('../views/Recent.vue')
     },
-    {
-      path: '/timer',
-      name: 'timer',
-      // this generates a separate chunk (Timer.[hash].js) for this route
-      component: () => import('../views/Timer.vue')
-    },
+    // {
+    //   path: '/timer',
+    //   name: 'timer',
+    //   // this generates a separate chunk (Timer.[hash].js) for this route
+    //   component: () => import('../views/Timer.vue')
+    // },
   ]
 })
 
