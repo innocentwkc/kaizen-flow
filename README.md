@@ -3,22 +3,22 @@
 Kaizen Flow is a robust web application designed to streamline workflow and productivity. Built with Vue 3, it incorporates a suite of tools and libraries to provide a seamless user experience.
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Author](#author)
-3. [Scripts](#scripts)
-   - [start](#start)
-   - [web-app](#web-app)
-   - [build](#build)
-   - [preview](#preview)
-   - [server](#server)
-   - [test:unit](#testunit)
-   - [test:e2e](#teste2e)
-   - [test:e2e:dev](#teste2edev)
-   - [build-only](#build-only)
-   - [type-check](#type-check)
-4. [Dependencies](#dependencies)
-5. [DevDependencies](#devdependencies)
-6. [Contributing](#contributing)
+- [Kaizen Flow](#kaizen-flow)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Author](#author)
+  - [Scripts](#scripts)
+    - [start](#start)
+    - [web-app](#web-app)
+    - [build](#build)
+    - [preview](#preview)
+    - [server](#server)
+    - [test:unit](#testunit)
+    - [test:e2e](#teste2e)
+    - [test:e2e:dev](#teste2edev)
+    - [build-only](#build-only)
+    - [type-check](#type-check)
+  - [Dependencies](#dependencies)
 
 ## Introduction
 <a id="introduction"></a>

@@ -14,13 +14,19 @@ const extractTOC = require('./lib/extractTOC');  // Custom function to extract t
 const parseChapters = require('./lib/parseChapters');  // Custom function to parse units and sub-chapters from text
 const fileOperations = require('./lib/fileOperations');  // Custom file operation functions
 
+var pdfToTextCommand = path.join(__dirname, 'bin', 'pdftotext');
+
+var options = {
+  cwd: path.join(__dirname, 'bin')
+};
+
 /**
  * Extract text, table of contents, units, and sub-chapters from a PDF file.
  * @param {string} filePath - Path to the PDF file to extract information from.
  */
 const extractPDFInformation = (fileName = 'DefaultPDF', filePath) => {
   // Extract text from the PDF file using the 'pdf-text-extract' library
-  extract(filePath, function (err, pages) {
+  extract(filePath, options, pdfToTextCommand, function (err, pages) {
     if (err) {
       console.error('Error extracting text from PDF:');
       console.error(err);
