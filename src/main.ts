@@ -7,24 +7,37 @@
  * @fileoverview Vue application entry point.
  */
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-import App from './App.vue'
+import App from './App.vue';
 
 // Import Tailwind CSS file
-import './assets/css/tailwind.css'
+import './assets/css/tailwind.css';
 
-import router from './router'
+import router from './router';
 
-// Create the Vue application instance
-const app = createApp(App)
+/**
+ * Create the Vue application instance and configure plugins.
+ * 
+ * @returns {Object} The Vue application instance.
+ */
+const app = createApp(App);
 
-// Use Pinia for state management
-app.use(createPinia())
+/**
+ * Install Pinia for state management.
+ * @see {@link https://pinia.vuejs.org/}
+ */
+app.use(createPinia());
 
-// Use Vue Router for navigation
-app.use(router)
+/**
+ * Install Vue Router for application routing.
+ * @see {@link https://router.vuejs.org/}
+ */
+app.use(router);
 
-// Mount the Vue application to the DOM
-app.mount('#app')
+/**
+ * Mount the Vue application to the DOM.
+ * @param {string} selector - The CSS selector of the application's root element.
+ */
+app.mount('#app');

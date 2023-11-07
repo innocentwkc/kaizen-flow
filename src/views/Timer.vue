@@ -42,125 +42,130 @@
 
 <script setup>
 
-  import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
-  /**
-  * Represents the current time in seconds.
-  */
-  const time = ref(0);
+/**
+ * The current time in seconds.
+ * @type {Ref<number>}
+ */
+const time = ref(0);
 
-  /**
-   * Represents the custom hours set by the user.
-   */
-  const customHours = ref(0);
+/**
+ * Custom hours set by the user.
+ * @type {Ref<number>}
+ */
+const customHours = ref(0);
 
-  /**
-   * Represents the custom minutes set by the user.
-   */
-  const customMinutes = ref(6);
+/**
+ * Custom minutes set by the user.
+ * @type {Ref<number>}
+ */
+const customMinutes = ref(6);
 
-  /**
-   * Represents the custom seconds set by the user.
-   */
-  const customSeconds = ref(0);
+/**
+ * Custom seconds set by the user.
+ * @type {Ref<number>}
+ */
+const customSeconds = ref(0);
 
-  /**
-   * Flag to indicate whether the timer is running.
-   */
-  const isRunning = ref(false);
+/**
+ * Flag indicating whether the timer is running.
+ * @type {Ref<boolean>}
+ */
+const isRunning = ref(false);
 
-  /**
-   * Interval used for updating the timer.
-   */
-  let interval;
+/**
+ * The interval for updating the timer.
+ * @type {NodeJS.Timeout | null}
+ */
+let interval = null;
 
-  // Local storage key for lap count
-  const localStorageKey = 'pomodoroLapCount';
+/**
+ * Local storage key for the lap count.
+ * @type {string}
+ */
+const localStorageKey = 'pomodoroLapCount';
 
-  // Local storage key for question count
-  const questionCountStorageKey = 'questionCount';
+/**
+ * Local storage key for the question count.
+ * @type {string}
+ */
+const questionCountStorageKey = 'questionCount';
 
-  // Ref for lap count
-  const lapCount = ref(0);
+/**
+ * Lap count.
+ * @type {Ref<number>}
+ */
+const lapCount = ref(0);
 
-  // Ref for question count 
-  const questionCount = ref(0);
+/**
+ * Question count.
+ * @type {Ref<number>}
+ */
+const questionCount = ref(0);
 
-  // Ref for custom lap value
-  const customLap = ref(1);
+/**
+ * Custom lap value set by the user.
+ * @type {Ref<number>}
+ */
+const customLap = ref(1);
 
-  /**
-   * Increments the lap count by 1.
-   */
-  const incrementLap = () => {
-    lapCount.value += 1;
+/**
+ * Increments the lap count by 1 and stores it.
+ */
+const incrementLap = () => {
+  lapCount.value += 1;
+  storeLapCount();
+};
+
+/**
+ * Decrements the lap count by 1 if it's greater than 0 and stores it.
+ */
+const decrementLap = () => {
+  if (lapCount.value > 0) {
+    lapCount.value -= 1;
     storeLapCount();
-  };
+  }
+};
 
-  /**
-   * Decrements the lap count by 1, if greater than 0.
-   */
-  const decrementLap = () => {
-    if (lapCount.value > 0) {
-      lapCount.value -= 1;
-      storeLapCount();
-    }
-  };
+/**
+ * Sets the lap count to the custom lap value and stores it.
+ */
+const setCustomLap = () => {
+  lapCount.value = customLap.value;
+  storeLapCount();
+};
 
-  /**
-   * Sets the lap count to the custom lap value.
-   */
-  const setCustomLap = () => {
-    lapCount.value = customLap.value;
-    storeLapCount();
-  };
+/**
+ * Stores the lap count in local storage.
+ */
+const storeLapCount = () => {
+  localStorage.setItem(localStorageKey, lapCount.value.toString());
+};
 
-  /**
-   * Stores the lap count in local storage.
-   */
-  const storeLapCount = () => {
-    localStorage.setItem(localStorageKey, lapCount.value.toString());
-  };
+/**
+ * Stores the question count in local storage.
+ */
+const storeQuestionCount = () => {
+  localStorage.setItem(questionCountStorageKey, questionCount.value.toString());
+};
 
-  /**
-   * Stores the Question count in local storage.
-   */
-  const storeQuestionCount = () => {
-    localStorage.setItem(questionCountStorageKey, questionCount.value.toString());
-  };
+/**
+ * Computes the formatted time in HH:MM:SS format.
+ * @returns {string} The formatted time.
+ */
+const formattedTime = computed(() => {
+  const hours = Math.floor(time.value / 3600);
+  const minutes = Math.floor((time.value % 3600) / 60);
+  const seconds = time.value % 60;
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+});
 
-
- // Create a ref to hold a reference to the editable time element
-// const editableTime = ref(null);
-// ``
-// // Update the custom time based on the edited time text
-// const updateCustomTime = () => {
-//   const editedTime = parseInt(editableTime.value.innerText);
-//   console.log("....")
-//   if (!isNaN(editedTime) && editedTime >= 0) {
-//     time.value = editedTime;
-//   } else {
-//     alert('Please enter a valid positive number for the time.');
-//     editableTime.value.innerText = time.value;
-//   }
-// };
-
-  /**
-   * Computes the formatted time in HH:MM:SS format.
-   *
-   * @returns {string} The formatted time.
-   */
-  const formattedTime = computed(() => {
-    const hours = Math.floor(time.value / 3600);
-    const minutes = Math.floor((time.value % 3600) / 60);
-    const seconds = time.value % 60;
-    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  });
-
-  /**
-   * Represents the audio element for the alarm sound.
-   */
-  const audio = new Audio('/assets/sounds/handbell.mp3'); // Declare audio file
+/**
+ * The audio element for the alarm sound.
+ * @type {HTMLAudioElement}
+ */
+const audio = new Audio('/assets/sounds/handbell.mp3');
 
   /**
    * Starts the timer based on the custom time set by the user.
