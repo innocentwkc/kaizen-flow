@@ -3,22 +3,22 @@
 Kaizen Flow is a robust web application designed to streamline workflow and productivity. Built with Vue 3, it incorporates a suite of tools and libraries to provide a seamless user experience.
 
 ## Table of Contents
-1. [Introduction](#introduction)
-2. [Author](#author)
-3. [Scripts](#scripts)
-   - [web-app](#web-app)
-   - [build](#build)
-   - [preview](#preview)
-   - [server](#server)
-   - [start](#start)
-   - [test:unit](#testunit)
-   - [test:e2e](#teste2e)
-   - [test:e2e:dev](#teste2edev)
-   - [build-only](#build-only)
-   - [type-check](#type-check)
-4. [Dependencies](#dependencies)
-5. [DevDependencies](#devdependencies)
-6. [Contributing](#contributing)
+- [Kaizen Flow](#kaizen-flow)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Author](#author)
+  - [Scripts](#scripts)
+    - [start](#start)
+    - [web-app](#web-app)
+    - [build](#build)
+    - [preview](#preview)
+    - [server](#server)
+    - [test:unit](#testunit)
+    - [test:e2e](#teste2e)
+    - [test:e2e:dev](#teste2edev)
+    - [build-only](#build-only)
+    - [type-check](#type-check)
+  - [Dependencies](#dependencies)
 
 ## Introduction
 <a id="introduction"></a>
@@ -33,6 +33,15 @@ Welcome to the "Kaizen Flow" project, a web application designed for efficiency 
 ## Scripts
 <a id="scripts"></a>
 Below are the scripts defined in the `package.json` file for various tasks required during development, testing, and deployment.
+
+### start
+
+<a id="start"></a>
+Concurrently runs both the Vite development server and the Node.js server.
+
+```bash
+npm run start
+```
 
 ### web-app
 <a id="web-app"></a>
@@ -68,14 +77,7 @@ Launches the Node.js server found in the server/server.js file.
 npm run server
 ```
 
-### start
 
-<a id="start"></a>
-Concurrently runs both the Vite development server and the Node.js server.
-
-```bash
-npm run start
-```
 
 ### test:unit
 
