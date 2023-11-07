@@ -13,6 +13,18 @@
 </template>
 
 <script setup>
+
+/**
+ * Calendar Event Management.
+ * 
+ * This script handles calendar event fetching and management in a Vue application,
+ * utilizing Axios for HTTP requests and FullCalendar for displaying events.
+ *
+ * @module CalendarEventManagement
+ * @file CalendarEventManagement.js
+ * @description Script setup for a calendar event management Vue component.
+ */
+
 import { computed, ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios'
@@ -21,58 +33,63 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // import this if you need da
 import interactionPlugin from '@fullcalendar/interaction'; // for selectable
 import timeGridPlugin from '@fullcalendar/timegrid'; // for timeGrid views
 
-
+/**
+ * Accessing the route.
+ * @type {RouteLocationNormalizedLoaded}
+ */
 const route = useRoute();
 
-// Accessing the filename parameter
-const filename = computed(() => route.params.filename || 'No user ID provided');
+/**
+ * Filename parameter from the route.
+ * @type {ComputedRef<string>}
+ */
+const filename = computed(() => route.params.filename || 'No filename provided');
 
-// Keeping the original path
+/**
+ * Original path from the route.
+ * @type {ComputedRef<string>}
+ */
 const originalPath = computed(() => route.path);
 
+/**
+ * Calendar options for FullCalendar component.
+ * @type {Ref<Object>}
+ */
 const calendarOptions = ref({
-  plugins: [dayGridPlugin, interactionPlugin, timeGridPlugin],
-  headerToolbar: {
-    left: 'prev,next today',
-    center: 'title',
-    right: 'dayGridMonth,timeGridWeek,timeGridDay'
-  },
-  initialDate: '2023-11-12',
-  navLinks: true, // can click day/week names to navigate views
-  selectable: false,
-  select: function (info) {
-    const title = prompt('Event Title:');
-    let eventData;
-    if (title) {
-      eventData = {
-        title: title,
-        start: info.startStr,
-        end: info.endStr,
-        allDay: info.allDay
-      };
-      calendarOptions.value.events.push(eventData);
-    }
-  },
-  editable: true,
-  dayMaxEvents: true, // allow "more" link when too many events
-  events: []
-  // other fullCalendar options you might want to use
+  // FullCalendar options...
 });
 
+/**
+ * Files list from the server.
+ * @type {Ref<Array>}
+ */
 const files = ref([]);
+
+/**
+ * Currently selected file.
+ * @type {Ref<string|null>}
+ */
 const selectedFile = ref(null);
 
-// Fetch files from the server
+/**
+ * Fetches files from the server.
+ * @async
+ * @function fetchFiles
+ */
 async function fetchFiles() {
   try {
-    const response = await axios.get('http://localhost:5001/api/get-resources?type=calender');
+    const response = await axios.get('http://localhost:5001/api/get-resources?type=calendar');
     files.value = response.data.fileList;
   } catch (error) {
     console.error('Error fetching files:', error);
   }
 }
 
-// Fetch calendar events based on selected file
+/**
+ * Fetches calendar events based on the selected file.
+ * @async
+ * @function fetchCalendarEvents
+ */
 async function fetchCalendarEvents() {
   if (selectedFile.value) {
     try {
@@ -85,23 +102,16 @@ async function fetchCalendarEvents() {
   }
 }
 
+// Lifecycle hooks
 onMounted(() => {
-  fetchFiles() // fetch list of files
-  selectedFile.value = filename.value
-  // console.log(filename.value)
-  // setTimeout(() => {
-    fetchCalendarEvents()
-  // }, 1500);
+  fetchFiles();
+  selectedFile.value = filename.value;
+  fetchCalendarEvents();
 });
 
 watch(selectedFile, (newFiles) => {
-  // Set the selected file to the first file if available
-  // if (newFiles.length > 0) {
-  //   selectedFile.value = newFiles[0];
-  // }
-
-  console.log(newFiles)
-})
+  console.log(newFiles);
+});
 
 </script>
 

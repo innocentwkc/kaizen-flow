@@ -35,17 +35,53 @@
 </template>
 
 <script setup>
+  /**
+   * Handles file upload functionality within a Vue component.
+   * This script sets up reactive states for handling the PDF file and the response,
+   * and provides methods to handle file selection and upload the file using Axios.
+   *
+   * @module FileUpload
+   * @file FileUpload.js
+   * @description Script setup for a file upload Vue component.
+   */
+
   import { ref } from 'vue'
   import axios from 'axios'
 
+  /**
+   * Reactive state: pdf
+   * Holds the selected PDF file for upload.
+   * @type {Ref<File|null>}
+   */
   const pdf = ref(null);
+
+  /**
+   * Reactive state: response_output
+   * Holds the response message or file name after successful upload.
+   * @type {Ref<string|null>}
+   */
   const response_output = ref(null);
+
+  /**
+   * Reactive state: response_success
+   * Indicates whether the file upload was successful.
+   * @type {Ref<boolean>}
+   */
   const response_success = ref(false);
 
+  /**
+   * Handles file selection and sets the pdf reactive state.
+   * 
+   * @param {Event} event - The file input change event.
+   */
   const handleFileUpload = (event) => {
     pdf.value = event.target.files[0];
   };
 
+  /**
+   * Uploads the selected PDF file to a server endpoint using Axios.
+   * Updates the response_output and response_success reactive states based on the result.
+   */
   const uploadPdf = () => {
     if (!pdf.value) {
       console.error('No PDF file selected.');
@@ -57,6 +93,7 @@
 
     axios.post('http://localhost:5001/api/upload', formData)
       .then(response => {
+        // Example: 'document.pdf' becomes 'document.json'
         // let json_file_name = (response.data.filename).split('.')[0] + '.json'
 
         // console.log(json_file)
@@ -66,7 +103,7 @@
       })
       .catch(error => {
         response_success.value = false;
-        response_output.value = `Error uploading file: ${ error.message }`;
+        response_output.value = `Error uploading file: ${error.message}`;
       });
   };
 </script>

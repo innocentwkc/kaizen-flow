@@ -132,9 +132,48 @@ npm run type-check
 A list of production dependencies required for the application to run. These include frameworks, libraries, and other tools used in the project.
 DevDependencies
 
+
+- [@fullcalendar/core](https://www.npmjs.com/package/@fullcalendar/core)
+- [@fullcalendar/daygrid](https://www.npmjs.com/package/@fullcalendar/daygrid)
+- [@fullcalendar/interaction](https://www.npmjs.com/package/@fullcalendar/interaction)
+- [@fullcalendar/timegrid](https://www.npmjs.com/package/@fullcalendar/timegrid)
+- [@fullcalendar/vue3](https://www.npmjs.com/package/@fullcalendar/vue3)
+- [body-parser](https://www.npmjs.com/package/body-parser)
+- [cors](https://www.npmjs.com/package/cors)
+- [express](https://www.npmjs.com/package/express)
+- [ics](https://www.npmjs.com/package/ics)
+- [moment](https://www.npmjs.com/package/moment)
+- [multer](https://www.npmjs.com/package/multer)
+- [pdf-text-extract](https://www.npmjs.com/package/pdf-text-extract)
+- [pinia](https://www.npmjs.com/package/pinia)
+- [vue](https://www.npmjs.com/package/vue)
+- [vue-router](https://www.npmjs.com/package/vue-router)
+
+
 <a id="devdependencies"></a>
 Development dependencies are required only during the development process, not in the production environment. This includes testing frameworks, build tools, and other utilities.
 Contributing
+
+- [@tsconfig/node18](https://www.npmjs.com/package/@tsconfig/node18)
+- [@types/jsdom](https://www.npmjs.com/package/@types/jsdom)
+- [@types/node](https://www.npmjs.com/package/@types/node)
+- [@vitejs/plugin-vue](https://www.npmjs.com/package/@vitejs/plugin-vue)
+- [@vue/test-utils](https://www.npmjs.com/package/@vue/test-utils)
+- [@vue/tsconfig](https://www.npmjs.com/package/@vue/tsconfig)
+- [autoprefixer](https://www.npmjs.com/package/autoprefixer)
+- [concurrently](https://www.npmjs.com/package/concurrently)
+- [cypress](https://www.npmjs.com/package/cypress)
+- [jsdoc](https://www.npmjs.com/package/jsdoc)
+- [jsdom](https://www.npmjs.com/package/jsdom)
+- [kleur](https://www.npmjs.com/package/kleur)
+- [npm-run-all](https://www.npmjs.com/package/npm-run-all)
+- [postcss](https://www.npmjs.com/package/postcss)
+- [sass](https://www.npmjs.com/package/sass)
+- [start-server-and-test](https://www.npmjs.com/package/start-server-and-test)
+- [tailwindcss](https://www.npmjs.com/package/tailwindcss)
+- [typescript](https://www.npmjs.com/package/typescript)
+- [vite](https://www.npmjs.com/package/vite)
+- [vitest](https://www.npmjs.com/package/vitest)
 
 <a id="contributing"></a>
 Contributions are always welcome! If you're interested in contributing, please read the contributing guide and follow the project's code of conduct.
