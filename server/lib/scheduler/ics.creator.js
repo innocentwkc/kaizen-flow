@@ -18,7 +18,7 @@ const ics = require('ics');
 function icsCreator(data, savePath) {
   // Constants
   const totalHours = 150;
-  const startDate = new Date(2023, 11, 15, 8, 0, 0);
+  const startDate = new Date();
   const avoidStartTime = 23;
   const avoidEndTime = 5;
   const maxStudyDuration = 1;
@@ -27,7 +27,7 @@ function icsCreator(data, savePath) {
   const schedule = [];
 
   // Calculate the distribution of hours
-  const topics = data.units;
+  const topics = data;
   const topicHours = totalHours / topics.length;
 
   // Loop through each topic
