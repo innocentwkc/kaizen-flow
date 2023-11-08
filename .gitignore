@@ -30,4 +30,4 @@ coverage
 /server/test-data
 /server/data/*
 
-docs
+# docs
