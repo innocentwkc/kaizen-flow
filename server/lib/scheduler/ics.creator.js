@@ -27,7 +27,7 @@ function icsCreator(data, savePath) {
   const schedule = [];
 
   // Calculate the distribution of hours
-  const topics = data.units.units;
+  const topics = data.units;
   const topicHours = totalHours / topics.length;
 
   // Loop through each topic

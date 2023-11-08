@@ -58,18 +58,14 @@ const extractPDFInformation = (fileName = 'DefaultPDF', filePath) => {
     }
 
     // Parse units and sub-chapters from the extracted text using a custom function
+    // The units object contains the extracted units
     const units = parseChapters(text);
-
-    // Create a result object containing the extracted units
-    const result = {
-      units: units,
-    };
 
     // Define the path to save the result as a .json file
     const outputJsonPath = path.join(__dirname, `data/modules/${fileName}.json`);
 
     // Save the result as a .json file using custom file operation functions
-    fileOperations.saveJsonToFile(result, outputJsonPath, function (err) {
+    fileOperations.saveJsonToFile(units, outputJsonPath, function (err) {
       if (err) {
         console.error('Error saving units and sub-chapters to output.json:');
         console.error(err);
