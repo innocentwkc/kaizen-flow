@@ -11,7 +11,6 @@ Kaizen Flow is a robust web application designed to streamline workflow and prod
     - [start](#start)
     - [web-app](#web-app)
     - [build](#build)
-    - [preview](#preview)
     - [server](#server)
     - [test:unit](#testunit)
     - [test:e2e](#teste2e)
@@ -38,7 +37,7 @@ Below are the scripts defined in the `package.json` file for various tasks requi
 
 <a id="start"></a>
 Concurrently runs both the Vite development server and the Node.js server.
-Navigate to the application directory open your terminal an run the following
+Navigate to the application directory open your terminal and run the following
 
 ```bash
 npm install
@@ -62,15 +61,6 @@ Runs the build-only script to create a production build of the application.
 npm run build
 ```
 
-### preview
-
-<a id="preview"></a>
-Serves the production build locally for preview purposes.
-
-```bash
-npm run preview
-```
-
 ### server
 
 <a id="server"></a>
@@ -79,7 +69,6 @@ Launches the Node.js server found in the server/server.js file.
 ```bash
 npm run server
 ```
-
 
 
 ### test:unit
@@ -109,24 +98,6 @@ Runs end-to-end tests in development mode by starting the development server and
 
 ```bash
 npm run test:e2e:dev
-```
-
-
-### build-only
-
-<a id="build-only"></a>
-Builds the application for production deployment without running additional scripts.
-
-```bash
-npm run build-only
-```
-### type-check
-
-<a id="type-check"></a>
-Performs a TypeScript type check on the project.
-
-```bash
-npm run type-check
 ```
 
 ## Dependencies
