@@ -38,8 +38,11 @@ Below are the scripts defined in the `package.json` file for various tasks requi
 
 <a id="start"></a>
 Concurrently runs both the Vite development server and the Node.js server.
+Navigate to the application directory open your terminal an run the following
 
 ```bash
+npm install
+npm i -g concurrently
 npm run start
 ```
 
