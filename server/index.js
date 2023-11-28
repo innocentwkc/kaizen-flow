@@ -1,14 +1,29 @@
 /**
- * @file This script sets up an Express server to handle API requests for PDF file uploads.
- * It utilizes middleware for handling file uploads and employs CORS for cross-origin requests.
+ * @file index.js
+ * @description This script sets up an Express server to handle API requests for PDF file uploads. 
+ * It configures the server with necessary middleware for file uploads and employs CORS for handling cross-origin requests.
+ * This server acts as the backend for applications requiring PDF file processing capabilities.
+ * 
+ * @requires path
+ * @requires fs
+ * @requires kleur
+ * @requires express
+ * @requires cors
+ * @requires bodyParser
+ * @requires folderOperations
+ * @requires uploadMiddleware
+ * @requires icsCreator
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
  */
 
 const path = require('path');
 const fs = require('fs').promises;
-const kleur = require('kleur');
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
+const kleur = require('kleur'); // Library for colored terminal output
+const express = require('express'); // Express framework for building the server
+const cors = require('cors'); // CORS middleware for handling cross-origin requests
+const bodyParser = require('body-parser'); // Middleware for parsing request bodies
 const { folderExists, createFolder } = require('./lib/folderOperations');
 const icsCreator = require('./lib/scheduler/ics.creator');
 const icsParser = require('./lib/scheduler/ics.parser');
@@ -60,7 +75,7 @@ for (const folder of foldersToCheck) {
 
 /**
  * API endpoint to retrieve the list of uploaded files.
- * @name get-uploads
+ * @name /get-uploads
  * @path {GET} /get-uploads
  * @response {object} JSON response containing the lists of files and directories.
  */
@@ -76,7 +91,7 @@ router.get('/get-uploads', async (req, res) => {
 
 /**
  * API endpoint to retrieve the list of modules or calenders or a specific file from either.
- * @name get-resources
+ * @name /get-resources
  * @path {GET} /get-resources
  * @query {string} type Required. The type of resource to retrieve ('modules' or 'calenders').
  * @query {string} [file] Optional. The specific file to retrieve.

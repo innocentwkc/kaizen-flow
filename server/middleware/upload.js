@@ -1,7 +1,14 @@
 /**
  * @module uploadMiddleware
- * @description Module for handling file uploads using Multer middleware.
- * The uploaded files are stored in a specified destination with unique filenames.
+ * @description Module for handling file uploads using Multer middleware. 
+ * This module configures Multer to handle file uploads, storing them in a specified destination with unique filenames. 
+ * It's designed to integrate with Express.js to provide file uploading capabilities.
+ * 
+ * @requires multer
+ * @requires path
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
  */
 
 const multer = require('multer');
@@ -31,7 +38,7 @@ const storage = multer.diskStorage({
    * @param {function(Error, string)} cb - Callback function to set the filename.
    */
   filename: (req, file, cb) => {
-    const uniqueSuffix = Math.round(Math.random() * 1e9); // TODO: use username custom file name
+    const uniqueSuffix = Math.round(Math.random() * 1e9); // TODO: use username for custom file name
     cb(null, `module-${uniqueSuffix}${path.extname(file.originalname)}`);
   }
 });

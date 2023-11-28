@@ -1,8 +1,7 @@
 /**
- * This script handles folder operations such as checking if certain folders exists, creating folders and deleting folders .
- * 
- * Module to handle folder operations.
  * @module folderOperations
+ * @description This module handles folder operations such as checking if certain folders exists, creating folders and deleting folders .
+ * 
  * @author Innocent W.K Chinyemba
  * @version 1.0
  * @since 2023-09-08

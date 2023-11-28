@@ -1,8 +1,20 @@
 /**
+ * @module extractTOC
+ * @description This module provides a function to extract the table of contents from a given text. 
+ * It searches the text for specific markers that denote the start and end of the table of contents and extracts this section.
+ * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
+ */
+
+/**
  * Extracts the table of contents from the given text.
+ * It processes the text, identifies the start and end of the table of contents, and extracts this portion.
  *
+ * @function extractTOC
  * @param {string} text - The input text containing the table of contents.
- * @return {string|null} The extracted table of contents as a string, or null if not found.
+ * @returns {string|null} The extracted table of contents as a string, or null if not found.
  */
 module.exports = extractTOC = (text) => {
   // Split the input 'text' into an array of lines for easier processing.

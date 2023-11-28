@@ -1,7 +1,13 @@
 /**
- * This script extracts text and structural information from a PDF file.
- * It extracts the text, table of contents, units, and sub-chapters, and saves the results in various formats.
+ * @module extractor
+ * @description This script extracts text and structural information from a PDF file. 
+ * It is designed to process a PDF file and extract its text, table of contents, units, and sub-chapters. 
+ * The extracted information is saved in various formats for further use.
  * 
+ * @requires path
+ * @requires pdf-text-extract
+ * @requires extractTOC
+ * @requires extractChapters
  * @author Innocent W.K Chinyemba
  * @version 1.0
  * @since 2023-09-08

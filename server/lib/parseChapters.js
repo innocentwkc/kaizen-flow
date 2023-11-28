@@ -1,10 +1,22 @@
 /**
- * Parses units and their sub-chapters from the given text.
- * This function processes the text and extracts information about units and their sub-chapters.
- * It returns an object containing the parsed units and sub-chapters.
+ * @module parseChapters
+ * @description This module provides a function to parse units and their sub-chapters from a given text. 
+ * It processes the text to extract information about units and sub-chapters, organizing them into a structured format.
+ * This is useful for processing and organizing textual data into a more manageable format.
  * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
+ */
+
+/**
+ * Parses units and their sub-chapters from the given text.
+ * This function processes the text and extracts information about units and their sub-chapters,
+ * returning them in a structured object format.
+ *
+ * @function parseChapters
  * @param {string} text - The text content to be parsed.
- * @return {object} An object containing the parsed units and sub-chapters.
+ * @returns {object} An object containing the parsed units and sub-chapters.
  */
 module.exports = function parseChapters(text) {
   // Initialize an array to store parsed units.
