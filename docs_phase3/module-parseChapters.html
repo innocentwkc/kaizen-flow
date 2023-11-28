@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Module: parseChapters</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,35 +17,9 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Module: parseChapters</h1>
 
     
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -54,16 +28,13 @@
 
 <header>
     
-        <h2>index.js</h2>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
-            <div class="description">This script sets up an Express server to handle API requests for PDF file uploads. It configures the server with necessary middleware for file uploads and employs CORS for handling cross-origin requests.This server acts as the backend for applications requiring PDF file processing capabilities.</div>
+            <div class="description">This module provides a function to parse units and their sub-chapters from a given text. It processes the text to extract information about units and sub-chapters, organizing them into a structured format.This is useful for processing and organizing textual data into a more manageable format.</div>
         
 
         
@@ -111,7 +82,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1">line 1</a>
+        <a href="lib_parseChapters.js.html">lib/parseChapters.js</a>, <a href="lib_parseChapters.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -130,27 +101,100 @@
     
 
     
-        <h3 class="subsection-title">Requires</h3>
 
-        <ul>
-            <li>module:path</li>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
         
-            <li>module:fs</li>
+            
+
+    
+
+    
+    <h4 class="name" id="~parseChapters"><span class="type-signature">(inner) </span>parseChapters<span class="signature">(text)</span><span class="type-signature"> &rarr; {object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parses units and their sub-chapters from the given text.This function processes the text and extracts information about units and their sub-chapters,returning them in a structured object format.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
         
-            <li>module:kleur</li>
+        <th>Name</th>
         
-            <li>module:express</li>
+
+        <th>Type</th>
+
         
-            <li>module:cors</li>
+
         
-            <li>module:bodyParser</li>
-        
-            <li><a href="module-folderOperations.html">module:folderOperations</a></li>
-        
-            <li><a href="module-uploadMiddleware.html">module:uploadMiddleware</a></li>
-        
-            <li><a href="module-icsCreator.html">module:icsCreator</a></li>
-        </ul>
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The text content to be parsed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
     
 
     
@@ -163,6 +207,74 @@
 
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_parseChapters.js.html">lib/parseChapters.js</a>, <a href="lib_parseChapters.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An object containing the parsed units and sub-chapters.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     

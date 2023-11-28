@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Module: icsParser</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,35 +17,9 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Module: icsParser</h1>
 
     
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -54,16 +28,13 @@
 
 <header>
     
-        <h2>index.js</h2>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
-            <div class="description">This script sets up an Express server to handle API requests for PDF file uploads. It configures the server with necessary middleware for file uploads and employs CORS for handling cross-origin requests.This server acts as the backend for applications requiring PDF file processing capabilities.</div>
+            <div class="description">This module provides a function to parse ICS (iCalendar) data. It takes raw ICS data, processes it, and converts it into a structured format of calendar events. This is useful for extracting and manipulating calendar data from ICS files programmatically.</div>
         
 
         
@@ -111,7 +82,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1">line 1</a>
+        <a href="lib_scheduler_ics.parser.js.html">lib/scheduler/ics.parser.js</a>, <a href="lib_scheduler_ics.parser.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -133,23 +104,7 @@
         <h3 class="subsection-title">Requires</h3>
 
         <ul>
-            <li>module:path</li>
-        
-            <li>module:fs</li>
-        
-            <li>module:kleur</li>
-        
-            <li>module:express</li>
-        
-            <li>module:cors</li>
-        
-            <li>module:bodyParser</li>
-        
-            <li><a href="module-folderOperations.html">module:folderOperations</a></li>
-        
-            <li><a href="module-uploadMiddleware.html">module:uploadMiddleware</a></li>
-        
-            <li><a href="module-icsCreator.html">module:icsCreator</a></li>
+            <li>module:moment-timezone</li>
         </ul>
     
 
@@ -163,6 +118,169 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~parseICS"><span class="type-signature">(inner) </span>parseICS<span class="signature">(icsData)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parses ICS (iCalendar) data.This function takes raw ICS data, processes each line, and constructs an array of event objects, each representing a single calendar event. It uses 'moment-timezone' for date-time manipulations.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>icsData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The raw ICS data string to be parsed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_scheduler_ics.parser.js.html">lib/scheduler/ics.parser.js</a>, <a href="lib_scheduler_ics.parser.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of event objects representing the parsed calendar events.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
     
 
     

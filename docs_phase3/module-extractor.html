@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Module: extractor</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,35 +17,9 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Module: extractor</h1>
 
     
-
-
-
-    
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
 
 
 
@@ -54,16 +28,13 @@
 
 <header>
     
-        <h2>index.js</h2>
-        
-    
 </header>
 
 <article>
     <div class="container-overview">
     
         
-            <div class="description">This script sets up an Express server to handle API requests for PDF file uploads. It configures the server with necessary middleware for file uploads and employs CORS for handling cross-origin requests.This server acts as the backend for applications requiring PDF file processing capabilities.</div>
+            <div class="description">This script extracts text and structural information from a PDF file. It is designed to process a PDF file and extract its text, table of contents, units, and sub-chapters. The extracted information is saved in various formats for further use.</div>
         
 
         
@@ -111,7 +82,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line1">line 1</a>
+        <a href="extractor.js.html">extractor.js</a>, <a href="extractor.js.html#line1">line 1</a>
     </li></ul></dd>
     
 
@@ -135,21 +106,11 @@
         <ul>
             <li>module:path</li>
         
-            <li>module:fs</li>
+            <li>module:pdf-text-extract</li>
         
-            <li>module:kleur</li>
+            <li><a href="module-extractTOC.html">module:extractTOC</a></li>
         
-            <li>module:express</li>
-        
-            <li>module:cors</li>
-        
-            <li>module:bodyParser</li>
-        
-            <li><a href="module-folderOperations.html">module:folderOperations</a></li>
-        
-            <li><a href="module-uploadMiddleware.html">module:uploadMiddleware</a></li>
-        
-            <li><a href="module-icsCreator.html">module:icsCreator</a></li>
+            <li>module:extractChapters</li>
         </ul>
     
 
@@ -163,6 +124,147 @@
 
     
 
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~extractPDFInformation"><span class="type-signature">(inner) </span>extractPDFInformation<span class="signature">(filePath)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Extract text, table of contents, units, and sub-chapters from a PDF file.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filePath</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Path to the PDF file to extract information from.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="extractor.js.html">extractor.js</a>, <a href="extractor.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
     
 
     
