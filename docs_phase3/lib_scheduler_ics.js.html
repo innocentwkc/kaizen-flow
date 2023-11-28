@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lib/scheduler/ics.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lib/scheduler/ics.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Generates a schedule based on the provided JSON data, total hours, start date, and filename.
+ * @param {string} jsonFilePath - The path to the JSON file containing the data.
+ * @param {number} totalHours - The total available study hours.
+ * @param {string} filename - The name of the output ICS file.
+ * @param {Date} startDate - The start date and time for the schedule.
+*/
+
+
+const fs = require('fs');
+const ics = require('ics');
+
+
+const generateSchedule = (jsonFilePath, totalHours, filename, startDate) => {
+  const data = require(jsonFilePath);
+
+  // Initialize the schedule
+  const schedule = [];
+
+  // Calculate the distribution of hours
+  const topics = data.units.units;
+  const topicHours = totalHours / topics.length;
+
+  // Define the time window to avoid (23:00 to 05:00)
+  const avoidStartTime = 23;
+  const avoidEndTime = 5;
+
+  // Define the maximum study duration (in hours) before taking a break
+  const maxStudyDuration = 1;
+
+  // Loop through each topic
+  for (const topic of topics) {
+    const subChapters = topic.subChapters;
+    const subChapterHours = topicHours / subChapters.length;
+
+    // Loop through sub-chapters within the topic
+    for (const subChapter of subChapters) {
+      // Calculate start and end times for the sub-chapter
+      const startTime = new Date(startDate);
+      const endTime = new Date(startTime.getTime() + subChapterHours * 60 * 60 * 1000);
+
+      // Avoid the time window (23:00 to 05:00)
+      if (startTime.getHours() >= avoidStartTime || endTime.getHours() &lt;= avoidEndTime) {
+        startTime.setHours(avoidEndTime);
+        endTime.setHours(avoidEndTime);
+      }
+
+      // Create an event for the sub-chapter
+      const event = {
+        title: `Unit ${topic.unitNumber} - Subchapter ${subChapter.subChapterNumber}`,
+        description: subChapter.subChapterTitle,
+        start: [startTime.getFullYear(), startTime.getMonth() + 1, startTime.getDate(), startTime.getHours(), startTime.getMinutes()],
+        duration: { hours: subChapterHours },
+      };
+
+      // Add the event to the schedule
+      schedule.push(event);
+
+      // Update the start time for the next sub-chapter
+      startDate.setTime(endTime.getTime());
+
+      // Calculate the break time
+      const breakDuration = maxStudyDuration - subChapterHours;
+      if (breakDuration > 0) {
+        // Add a break event
+        const breakStartTime = new Date(startDate);
+        const breakEndTime = new Date(startDate.getTime() + breakDuration * 60 * 60 * 1000);
+
+        // Avoid the time window (23:00 to 05:00)
+        if (breakStartTime.getHours() >= avoidStartTime || breakEndTime.getHours() &lt;= avoidEndTime) {
+          breakStartTime.setHours(avoidEndTime);
+          breakEndTime.setHours(avoidEndTime);
+        }
+
+        const breakEvent = {
+          title: 'Break',
+          description: 'Take a break',
+          start: [breakStartTime.getFullYear(), breakStartTime.getMonth() + 1, breakStartTime.getDate(), breakStartTime.getHours(), breakStartTime.getMinutes()],
+          duration: { hours: breakDuration },
+        };
+
+        // Add the break event to the schedule
+        schedule.push(breakEvent);
+
+        // Update the start time for the next sub-chapter or break
+        startDate.setTime(breakEndTime.getTime());
+      }
+    }
+  }
+
+  // Generate the ICS content
+  const { error, value } = ics.createEvents(schedule);
+
+  if (error) {
+    console.error(error);
+  } else {
+    // Save the ICS file to disk
+    fs.writeFileSync(filename, value);
+    console.log(`Schedule saved as ${filename}`);
+  }
+};
+
+// Export the function as a module
+module.exports = generateSchedule;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-cleanSubChapters.html">cleanSubChapters</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-folderOperations.html">folderOperations</a></li><li><a href="module-icsCreator.html">icsCreator</a></li><li><a href="module-uploadMiddleware.html">uploadMiddleware</a></li></ul><h3>Global</h3><ul><li><a href="global.html#/generate-ics">/generate-ics</a></li><li><a href="global.html#/get-ics-events/:filename">/get-ics-events/:filename</a></li><li><a href="global.html#/upload">/upload</a></li><li><a href="global.html#SERVER_PORT">SERVER_PORT</a></li><li><a href="global.html#extractPDFInformation">extractPDFInformation</a></li><li><a href="global.html#fetchFileAndDirList">fetchFileAndDirList</a></li><li><a href="global.html#foldersToCheck">foldersToCheck</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#get-resources">get-resources</a></li><li><a href="global.html#get-uploads">get-uploads</a></li><li><a href="global.html#publicPath">publicPath</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Nov 27 2023 22:13:23 GMT+0200 (Central Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

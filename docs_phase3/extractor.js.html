@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: extractor.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: extractor.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * This script extracts text and structural information from a PDF file.
+ * It extracts the text, table of contents, units, and sub-chapters, and saves the results in various formats.
+ * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
+ */
+
+// Import necessary modules
+const path = require('path');  // Path module for handling file paths
+const extract = require('pdf-text-extract');  // PDF text extraction library
+const extractTOC = require('./lib/extractTOC');  // Custom function to extract the table of contents
+const parseChapters = require('./lib/parseChapters');  // Custom function to parse units and sub-chapters from text
+const cleanSubChapters = require('./lib/cleanSubChapters');  // Custom function to parse units and sub-chapters from text
+const fileOperations = require('./lib/fileOperations');  // Custom file operation functions
+
+var pdfToTextCommand = path.join(__dirname, 'bin', 'pdftotext');
+
+var options = {
+  cwd: path.join(__dirname, 'bin')
+};
+
+/**
+ * Extract text, table of contents, units, and sub-chapters from a PDF file.
+ * @param {string} filePath - Path to the PDF file to extract information from.
+ */
+const extractPDFInformation = (fileName = 'DefaultPDF', filePath) => {
+  // Extract text from the PDF file using the 'pdf-text-extract' library
+  extract(filePath, options, pdfToTextCommand, function (err, pages) {
+    if (err) {
+      console.error('Error extracting text from PDF:');
+      console.error(err);
+      return;
+    }
+
+    // Join the extracted text pages into a single string
+    const text = pages.join('\n');
+
+    // Define the path to save the extracted text as a .txt file
+    const outputTextPath = path.join(__dirname, `data/logs/${fileName}-output.txt`);
+
+    // Save the extracted text to a .txt file using custom file operation functions
+    fileOperations.saveTextToFile(text, outputTextPath, function (err) {
+      if (err) {
+        console.error('Error saving extracted text to output.txt:');
+        console.error(err);
+        return;
+      }
+      console.log('Extracted text saved to output.txt');
+    });
+
+    // Extract table of contents from the extracted text using a custom function
+    const tableOfContentsText = extractTOC(text);
+
+    if (!tableOfContentsText) {
+      console.log('Table of contents not found.');
+      // return 'Table of contents not found.';
+    }
+
+    // Parse units and sub-chapters from the extracted text using a custom function
+    // The units object contains the extracted units
+    const data = parseChapters(text);
+    // Clean sub chapters
+    const cleanedData = cleanSubChapters(data.units);
+
+    // Define the path to save the result as a .json file
+    const outputJsonPath = path.join(__dirname, `data/modules/${fileName}.json`);
+
+    // Save the result as a .json file using custom file operation functions
+    fileOperations.saveJsonToFile(cleanedData, outputJsonPath, function (err) {
+      if (err) {
+        console.error('Error saving units and sub-chapters to output.json:');
+        console.error(err);
+        return err;
+      }
+
+      console.log('Units and sub-chapters extracted and saved to output.json');
+      // return outputJsonPath;
+    });
+  });
+}
+
+module.exports = {
+  extractPDFInformation
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-cleanSubChapters.html">cleanSubChapters</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-folderOperations.html">folderOperations</a></li><li><a href="module-icsCreator.html">icsCreator</a></li><li><a href="module-uploadMiddleware.html">uploadMiddleware</a></li></ul><h3>Global</h3><ul><li><a href="global.html#/generate-ics">/generate-ics</a></li><li><a href="global.html#/get-ics-events/:filename">/get-ics-events/:filename</a></li><li><a href="global.html#/upload">/upload</a></li><li><a href="global.html#SERVER_PORT">SERVER_PORT</a></li><li><a href="global.html#extractPDFInformation">extractPDFInformation</a></li><li><a href="global.html#fetchFileAndDirList">fetchFileAndDirList</a></li><li><a href="global.html#foldersToCheck">foldersToCheck</a></li><li><a href="global.html#fs">fs</a></li><li><a href="global.html#get-resources">get-resources</a></li><li><a href="global.html#get-uploads">get-uploads</a></li><li><a href="global.html#publicPath">publicPath</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Nov 27 2023 22:13:23 GMT+0200 (Central Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
