@@ -1,33 +1,41 @@
+<!--
+ * Main layout component for the Vue application.
+ *
+ * This component sets up the main structure of the application, including
+ * navigation and router views.
+ *
+ * @file MainLayout.vue
+ * @description Main layout component with navigation and router views.
+-->
+
 <script setup lang="ts">
+/**
+ * @module MainLayout
+ * @description The main layout component that assembles the whole application view.
+ */
+
+/**
+ * RouterLink and RouterView are essential components from vue-router.
+ * RouterLink is used for navigation, and RouterView is a placeholder for matched components.
+ * 
+ * @see {@link https://router.vuejs.org/api/#router-link}
+ * @see {@link https://router.vuejs.org/api/#router-view}
+ */
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+/**
+ * Navigation is the component that renders the application's navigation bar.
+ */
 import Navigation from './components/Navigation.vue'
 </script>
 
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/wind-icon.png" width="125" height="125" />
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
   <Navigation />
-
   <RouterView class="view-body"/>
 </template>
 
 <style>
 #app {
   display: flex;
-  /* flex-direction: row; */
-}
-
-.view-body {
-  /* position: relative; */
-  /* left: 350px; */
 }
 
 .logo {
@@ -35,19 +43,10 @@ import Navigation from './components/Navigation.vue'
   margin: 0 auto 2rem;
 }
 
-nav {
-  /* width: 100%; */
-  /* font-size: 12px; */
-  /* text-align: center; */
-  /* margin-top: 2rem; */
-}
-
-
 @media (min-width: 1024px) {
   
   .logo {
     margin: 0 2rem 0 0;
   }
-
 }
 </style>
