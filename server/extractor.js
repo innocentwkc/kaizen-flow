@@ -1,7 +1,13 @@
 /**
- * This script extracts text and structural information from a PDF file.
- * It extracts the text, table of contents, units, and sub-chapters, and saves the results in various formats.
+ * @module extractor
+ * @description This script extracts text and structural information from a PDF file. 
+ * It is designed to process a PDF file and extract its text, table of contents, units, and sub-chapters. 
+ * The extracted information is saved in various formats for further use.
  * 
+ * @requires path
+ * @requires pdf-text-extract
+ * @requires extractTOC
+ * @requires extractChapters
  * @author Innocent W.K Chinyemba
  * @version 1.0
  * @since 2023-09-08
@@ -12,6 +18,7 @@ const path = require('path');  // Path module for handling file paths
 const extract = require('pdf-text-extract');  // PDF text extraction library
 const extractTOC = require('./lib/extractTOC');  // Custom function to extract the table of contents
 const parseChapters = require('./lib/parseChapters');  // Custom function to parse units and sub-chapters from text
+const cleanSubChapters = require('./lib/cleanSubChapters');  // Custom function to parse units and sub-chapters from text
 const fileOperations = require('./lib/fileOperations');  // Custom file operation functions
 
 var pdfToTextCommand = path.join(__dirname, 'bin', 'pdftotext');
@@ -58,18 +65,16 @@ const extractPDFInformation = (fileName = 'DefaultPDF', filePath) => {
     }
 
     // Parse units and sub-chapters from the extracted text using a custom function
-    const units = parseChapters(text);
-
-    // Create a result object containing the extracted units
-    const result = {
-      units: units,
-    };
+    // The units object contains the extracted units
+    const data = parseChapters(text);
+    // Clean sub chapters
+    const cleanedData = cleanSubChapters(data.units);
 
     // Define the path to save the result as a .json file
     const outputJsonPath = path.join(__dirname, `data/modules/${fileName}.json`);
 
     // Save the result as a .json file using custom file operation functions
-    fileOperations.saveJsonToFile(result, outputJsonPath, function (err) {
+    fileOperations.saveJsonToFile(cleanedData, outputJsonPath, function (err) {
       if (err) {
         console.error('Error saving units and sub-chapters to output.json:');
         console.error(err);

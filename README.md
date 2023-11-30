@@ -11,13 +11,8 @@ Kaizen Flow is a robust web application designed to streamline workflow and prod
     - [start](#start)
     - [web-app](#web-app)
     - [build](#build)
-    - [preview](#preview)
     - [server](#server)
-    - [test:unit](#testunit)
     - [test:e2e](#teste2e)
-    - [test:e2e:dev](#teste2edev)
-    - [build-only](#build-only)
-    - [type-check](#type-check)
   - [Dependencies](#dependencies)
 
 ## Introduction
@@ -26,9 +21,6 @@ Welcome to the "Kaizen Flow" project, a web application designed for efficiency 
 
 ## Author
 <a id="author"></a>
-**Innocent W.K. Chinyemba**
-- Email: [innocentwkc@gmail.com](mailto:innocentwkc@gmail.com)
-- Website: [https://innocentwkc.com](https://innocentwkc.com)
 
 ## Scripts
 <a id="scripts"></a>
@@ -38,8 +30,11 @@ Below are the scripts defined in the `package.json` file for various tasks requi
 
 <a id="start"></a>
 Concurrently runs both the Vite development server and the Node.js server.
+Navigate to the application directory open your terminal and run the following
 
 ```bash
+npm install
+npm i -g concurrently
 npm run start
 ```
 
@@ -59,15 +54,6 @@ Runs the build-only script to create a production build of the application.
 npm run build
 ```
 
-### preview
-
-<a id="preview"></a>
-Serves the production build locally for preview purposes.
-
-```bash
-npm run preview
-```
-
 ### server
 
 <a id="server"></a>
@@ -77,54 +63,15 @@ Launches the Node.js server found in the server/server.js file.
 npm run server
 ```
 
-
-
-### test:unit
-
-<a id="testunit"></a>
-Executes unit tests using Vitest.
-
-```bash
-npm run test:unit
-```
-
-
 ### test:e2e
 
 <a id="teste2e"></a>
-Runs end-to-end tests by starting the preview server and then executing Cypress tests.
+Runs end-to-end tests by starting the server and frontend and then executing Cypress tests.
 
 ```bash
 npm run test:e2e
 ```
 
-
-### test:e2e:dev
-
-<a id="teste2edev"></a>
-Runs end-to-end tests in development mode by starting the development server and opening Cypress in interactive mode.
-
-```bash
-npm run test:e2e:dev
-```
-
-
-### build-only
-
-<a id="build-only"></a>
-Builds the application for production deployment without running additional scripts.
-
-```bash
-npm run build-only
-```
-### type-check
-
-<a id="type-check"></a>
-Performs a TypeScript type check on the project.
-
-```bash
-npm run type-check
-```
 
 ## Dependencies
 

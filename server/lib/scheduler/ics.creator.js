@@ -1,24 +1,28 @@
 /**
  * @module icsCreator
- * @description This module provides a function to generate an ICS (iCalendar) schedule based on a given set of data. It schedules topics and subchapters and avoids scheduling during certain hours. It outputs an ICS file which can be imported into most calendar applications.
+ * @description This module provides a function to generate an ICS (iCalendar) schedule based on a given set of data. 
+ * It schedules topics and subchapters, taking into account constraints like avoiding certain hours. 
+ * The output is an ICS file, compatible with most calendar applications, containing the scheduled items.
+ * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
  */
 
-const { writeFileSync } = require('fs');
-const ics = require('ics');
-
 /**
- * Creates an ICS (iCalendar) file with a schedule based on the provided data and saves it to the specified path.
+ * Creates an ICS (iCalendar) file with a schedule based on the provided data.
+ * This function arranges topics and subchapters into a schedule, avoiding certain predefined hours,
+ * and saves the resulting schedule in an ICS file format to the specified path.
  *
- * The function calculates the distribution of study hours across topics and subchapters and avoids scheduling during specified hours.
- * Each topic and subchapter is treated as an event in the ICS file. Breaks are also scheduled between study sessions.
- *
- * @param {object} data - The data object containing units and subchapters to schedule.
- * @param {string} savePath - The file system path where the ICS file will be saved.
+ * @function createICSSchedule
+ * @param {Object[]} scheduleData - Array of data objects representing topics and subchapters to schedule.
+ * @param {string} outputPath - The file path where the ICS file will be saved.
+ * @returns {Object} An object containing the result of the schedule creation, including any errors encountered.
  */
 function icsCreator(data, savePath) {
   // Constants
   const totalHours = 150;
-  const startDate = new Date(2023, 11, 15, 8, 0, 0);
+  const startDate = new Date();
   const avoidStartTime = 23;
   const avoidEndTime = 5;
   const maxStudyDuration = 1;
@@ -27,7 +31,7 @@ function icsCreator(data, savePath) {
   const schedule = [];
 
   // Calculate the distribution of hours
-  const topics = data.units.units;
+  const topics = data;
   const topicHours = totalHours / topics.length;
 
   // Loop through each topic

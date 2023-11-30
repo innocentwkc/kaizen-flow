@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: parser</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Module: parser</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+            <div class="description">This module provides a function to parse ICS (iCalendar) data. It takes raw ICS data, processes it, and converts it into a structured format of calendar events. This is useful for extracting and manipulating calendar data from ICS files programmatically.</div>
+        
+
+        
+
+
+<dl class="details">
+
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>1.0</li></ul></dd>
+    
+
+    
+    <dt class="tag-since">Since:</dt>
+    <dd class="tag-since"><ul class="dummy"><li>2023-09-08</li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li>Innocent W.K Chinyemba</li>
+        </ul>
+    </dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_scheduler_ics.parser.js.html">lib/scheduler/ics.parser.js</a>, <a href="lib_scheduler_ics.parser.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Requires</h3>
+
+        <ul>
+            <li>module:moment-timezone</li>
+        </ul>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~parseICS"><span class="type-signature">(inner) </span>parseICS<span class="signature">(icsData)</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Parses ICS (iCalendar) data.This function takes raw ICS data, processes each line, and constructs an array of event objects, each representing a single calendar event. It uses 'moment-timezone' for date-time manipulations.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>icsData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The raw ICS data string to be parsed.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="lib_scheduler_ics.parser.js.html">lib/scheduler/ics.parser.js</a>, <a href="lib_scheduler_ics.parser.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An array of event objects representing the parsed calendar events.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="ics.module_creator.html">creator</a></li><li><a href="ics.module_parser.html">parser</a></li><li><a href="module-cleanSubChapters.html">cleanSubChapters</a></li><li><a href="module-extractTOC.html">extractTOC</a></li><li><a href="module-extractor.html">extractor</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-folderOperations.html">folderOperations</a></li><li><a href="module-parseChapters.html">parseChapters</a></li><li><a href="module-uploadMiddleware.html">uploadMiddleware</a></li></ul><h3>Global</h3><ul><li><a href="global.html#/generate-ics">/generate-ics</a></li><li><a href="global.html#/get-ics-events/:filename">/get-ics-events/:filename</a></li><li><a href="global.html#/upload">/upload</a></li><li><a href="global.html#SERVER_PORT">SERVER_PORT</a></li><li><a href="global.html#fetchFileAndDirList">fetchFileAndDirList</a></li><li><a href="global.html#foldersToCheck">foldersToCheck</a></li><li><a href="global.html#get-resources">get-resources</a></li><li><a href="global.html#get-uploads">get-uploads</a></li><li><a href="global.html#publicPath">publicPath</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Nov 28 2023 04:56:49 GMT+0200 (Central Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

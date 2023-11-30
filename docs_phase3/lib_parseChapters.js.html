@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: lib/parseChapters.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: lib/parseChapters.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module parseChapters
+ * @description This module provides a function to parse units and their sub-chapters from a given text. 
+ * It processes the text to extract information about units and sub-chapters, organizing them into a structured format.
+ * This is useful for processing and organizing textual data into a more manageable format.
+ * 
+ * @author Innocent W.K Chinyemba
+ * @version 1.0
+ * @since 2023-09-08
+ */
+
+/**
+ * Parses units and their sub-chapters from the given text.
+ * This function processes the text and extracts information about units and their sub-chapters,
+ * returning them in a structured object format.
+ *
+ * @function parseChapters
+ * @param {string} text - The text content to be parsed.
+ * @returns {object} An object containing the parsed units and sub-chapters.
+ */
+module.exports = function parseChapters(text) {
+  // Initialize an array to store parsed units.
+  var units = [];
+
+  // Initialize a variable to keep track of the current unit being parsed.
+  var currentUnit = null;
+
+  // Split the 'text' into an array of lines for processing.
+  var lines = text.split('\n');
+
+  // Initialize a flag to stop parsing when the "Appendix" keyword is found.
+  var stopParsing = false;
+
+  // Iterate through each line in the 'text'.
+  lines.forEach(function (line) {
+    // If the flag to stop parsing is set, return and stop further parsing.
+    if (stopParsing) {
+      return;
+    }
+
+    // Check if the line starts with 'Unit' indicating the start of a new unit.
+    if (line.trim().startsWith('Unit')) {
+      // If a current unit exists, push it to the 'units' array.
+      if (currentUnit !== null) {
+        units.push(currentUnit);
+      }
+
+      // Create a new 'currentUnit' object with the unit number and an empty subChapters array.
+      currentUnit = {
+        unitNumber: line.trim(),
+        subChapters: [],
+      };
+    } else if (currentUnit !== null) {
+      // Use regular expressions to extract sub-chapter numbers and titles.
+      var subChapterMatch = /(\d+\.\d+)\s+([\s\S]*?)(?=(\d+\.\d+|$))/g;
+      var subChapterMatchResult;
+      while ((subChapterMatchResult = subChapterMatch.exec(line)) !== null) {
+        var subChapterNumber = subChapterMatchResult[1];
+        var subChapterTitle = subChapterMatchResult[2].trim();
+
+        // Add the extracted sub-chapter information to the current unit's subChapters array.
+        currentUnit.subChapters.push({ subChapterNumber, subChapterTitle });
+      }
+
+      // Check for the "Appendix" keyword and set the flag to stop parsing.
+      if (line.trim().startsWith('Appendix')) {
+        stopParsing = true;
+      }
+    }
+  });
+
+  // If a current unit exists, push it to the 'units' array.
+  if (currentUnit !== null) {
+    units.push(currentUnit);
+  }
+
+  // Create a result object containing the parsed units and their sub-chapters.
+  var result = {
+    units: units,
+  };
+
+  // Return the result object.
+  return result;
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-cleanSubChapters.html">cleanSubChapters</a></li><li><a href="module-extractTOC.html">extractTOC</a></li><li><a href="module-extractor.html">extractor</a></li><li><a href="module-fileOperations.html">fileOperations</a></li><li><a href="module-folderOperations.html">folderOperations</a></li><li><a href="module-icsCreator.html">icsCreator</a></li><li><a href="module-icsParser.html">icsParser</a></li><li><a href="module-parseChapters.html">parseChapters</a></li><li><a href="module-uploadMiddleware.html">uploadMiddleware</a></li></ul><h3>Global</h3><ul><li><a href="global.html#/generate-ics">/generate-ics</a></li><li><a href="global.html#/get-ics-events/:filename">/get-ics-events/:filename</a></li><li><a href="global.html#/get-resources">/get-resources</a></li><li><a href="global.html#/get-uploads">/get-uploads</a></li><li><a href="global.html#/upload">/upload</a></li><li><a href="global.html#SERVER_PORT">SERVER_PORT</a></li><li><a href="global.html#fetchFileAndDirList">fetchFileAndDirList</a></li><li><a href="global.html#foldersToCheck">foldersToCheck</a></li><li><a href="global.html#publicPath">publicPath</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Nov 28 2023 05:30:29 GMT+0200 (Central Africa Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
   "plugins": ["node_modules/jsdoc-vuejs"],
   "opts": {
     "encoding": "utf8",
-    "destination": "docs/",
+    "destination": "docs_phase3/",
     "recurse": true,
     "verbose": true
   }
