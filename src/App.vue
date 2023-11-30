@@ -22,12 +22,6 @@
  * @see {@link https://router.vuejs.org/api/#router-view}
  */
 import { RouterLink, RouterView } from 'vue-router'
-
-/**
- * HelloWorld is a sample component showcasing a simple hello world message.
- */
-import HelloWorld from './components/HelloWorld.vue'
-
 /**
  * Navigation is the component that renders the application's navigation bar.
  */
@@ -35,30 +29,23 @@ import Navigation from './components/Navigation.vue'
 </script>
 
 <template>
-  <Navigation class="fixed top-0 left-0 right-0 z-30" />
-  <RouterView class="view-body mt-16" />
+  <Navigation />
+  <RouterView class="view-body"/>
 </template>
 
 <style scoped lang="scss">
 #app {
-  @apply flex;
-}
-
-.view-body {
-  @apply mt-16;
+  display: flex;
 }
 
 .logo {
-  @apply block mx-auto my-0 mb-8;
-}
-
-nav {
-  @apply mt-8;
+  display: block;
+  margin: 0 auto 2rem;
 }
 
 @media (min-width: 1024px) {
   .logo {
-    @apply m-0 mr-8;
+    margin: 0 2rem 0 0;
   }
 }
 </style>
