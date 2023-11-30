@@ -30,10 +30,10 @@ import Navigation from './components/Navigation.vue'
 
 <template>
   <Navigation />
-  <RouterView class="view-body"/>
+  <RouterView class="view-body" />
 </template>
 
-<style scoped lang="scss">
+<style>
 #app {
   display: flex;
 }
@@ -44,6 +44,7 @@ import Navigation from './components/Navigation.vue'
 }
 
 @media (min-width: 1024px) {
+
   .logo {
     margin: 0 2rem 0 0;
   }
