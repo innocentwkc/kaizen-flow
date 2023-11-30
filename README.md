@@ -12,11 +12,7 @@ Kaizen Flow is a robust web application designed to streamline workflow and prod
     - [web-app](#web-app)
     - [build](#build)
     - [server](#server)
-    - [test:unit](#testunit)
     - [test:e2e](#teste2e)
-    - [test:e2e:dev](#teste2edev)
-    - [build-only](#build-only)
-    - [type-check](#type-check)
   - [Dependencies](#dependencies)
 
 ## Introduction
@@ -25,9 +21,6 @@ Welcome to the "Kaizen Flow" project, a web application designed for efficiency 
 
 ## Author
 <a id="author"></a>
-**Innocent W.K. Chinyemba**
-- Email: [innocentwkc@gmail.com](mailto:innocentwkc@gmail.com)
-- Website: [https://innocentwkc.com](https://innocentwkc.com)
 
 ## Scripts
 <a id="scripts"></a>
@@ -70,35 +63,15 @@ Launches the Node.js server found in the server/server.js file.
 npm run server
 ```
 
-
-### test:unit
-
-<a id="testunit"></a>
-Executes unit tests using Vitest.
-
-```bash
-npm run test:unit
-```
-
-
 ### test:e2e
 
 <a id="teste2e"></a>
-Runs end-to-end tests by starting the preview server and then executing Cypress tests.
+Runs end-to-end tests by starting the server and frontend and then executing Cypress tests.
 
 ```bash
 npm run test:e2e
 ```
 
-
-### test:e2e:dev
-
-<a id="teste2edev"></a>
-Runs end-to-end tests in development mode by starting the development server and opening Cypress in interactive mode.
-
-```bash
-npm run test:e2e:dev
-```
 
 ## Dependencies
 
