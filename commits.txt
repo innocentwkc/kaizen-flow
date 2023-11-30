@@ -1,0 +1,862 @@
+commit f48254c5b1405649403a34be28fe7322763eaf9c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 05:56:19 2023 +0200
+
+    rename CHANGE LOG file
+
+commit a79c1892eac9c0e1914a920a4806e609a35d10c4
+Merge: f3c42be 1a9fa6e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 05:31:00 2023 +0200
+
+    Merge branch 'development' of https://github.com/innocentwkc/kaizen-flow into development
+
+commit f3c42be98f0ef062046ec31a7c7dfb0b7f9216a5
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 05:30:55 2023 +0200
+
+    update phase 3 docs
+
+commit 9da27a72d0f3df6541d2cc52cbc9400ebb55dcee
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 05:30:13 2023 +0200
+
+    update docs
+
+commit 8b651fbed5ada537d7356848d204a5c67c116b9e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 04:45:46 2023 +0200
+
+    remove unused code
+
+commit 1a9fa6e4b37191ed2a0192dfdc0eaf6a81cc36ca
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 04:28:25 2023 +0200
+
+    remove unused code
+
+commit 2463ea3bb985666401459bb6285427f56cad9a9b
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 28 03:51:40 2023 +0200
+
+    phase 3 documentation update
+
+commit 32fe341215f4f67d1ec65d15d8b2c44f256ab25f
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 27 22:08:56 2023 +0200
+
+    update README
+
+commit 53854e3c59a467a7983fb25d2b0ab15c38f2b293
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 27 06:22:47 2023 +0200
+
+    update readme
+
+commit 44ea0ceea0c41006f1965616dd3f6cc08dc7c05a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Nov 9 01:12:38 2023 +0200
+
+    change start date and JSON data object wrapper
+
+commit 2206f97881b45f7283bd4826f691479fc17a5106
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Nov 9 00:18:36 2023 +0200
+
+    create docs
+
+commit 99450e581634934f3a6d490d816881915813ff5a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Nov 9 00:12:04 2023 +0200
+
+    feat: Add cleanSubChapters module
+    
+    Added a new module 'cleanSubChapters' which processes an array of unit
+    objects by cleaning up subChapterTitles to remove any trailing dots and
+    excess whitespace. The module also extracts and appends the pageNumber
+    property to each subChapter entry.
+
+commit 8b4ca79905820ab3667cd3c15640844a7c585b8a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Nov 8 23:28:58 2023 +0200
+
+    clean up units json object parsing
+
+commit 0593608a78e509d01a247c69d050e16bdefee6c0
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Nov 8 22:43:11 2023 +0200
+
+    version update
+
+commit 368e828d0c4050569bf388f1359cdb65a68b4a03
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Nov 8 00:08:25 2023 +0200
+
+    remove unnecessary default components and features
+
+commit 9adb8979d44c2a54e2a2bc3c870f7aab91266c57
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 7 23:29:58 2023 +0200
+
+    change default branch to main
+
+commit 497672ca4141fdd218ed3bf00aa36927418bbe3d
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 7 22:48:20 2023 +0200
+
+    update tests
+
+commit eb1296a0fdf4916b71b4eb768677f7b8e585edf7
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 7 21:40:45 2023 +0200
+
+    Fix path resolution for pdftotext windows binary
+
+commit b994e5faa54932267c204e8892547b73355fe408
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Nov 7 20:20:34 2023 +0200
+
+    resolve package conficts in test environment
+
+commit b1ac403f9afe83322d69809f6c7d067690a789e3
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 01:22:29 2023 +0200
+
+    server packages
+
+commit 937e7c00dfab14e2d2aa1c91728474aacfe876dc
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 01:21:30 2023 +0200
+
+    Build: 06.11.2023 01:21
+
+commit d5647b6be198f9347347d272b4dffe347dd67fc8
+Merge: 4aace99 d623fb1
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 01:21:16 2023 +0200
+
+    Merge branch 'development'
+
+commit d623fb173f144d0d54849faa451ae2453594ce84
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 01:20:17 2023 +0200
+
+    add dynamic routes to calender from upload
+
+commit 50ce23604395012bd918318008ee6bb24eee967e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:30:32 2023 +0200
+
+    resolve merge conflict #2
+
+commit b3d7a59525cffd484040faa2853f06ff6d10106b
+Merge: 546bfe2 7aac3fe
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:29:11 2023 +0200
+
+    Merge branch 'development' of https://github.com/innocentwkc/ikigai-flow into development
+
+commit 546bfe2d01791b605fb87cb8f75eed412a705a07
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:26:54 2023 +0200
+
+    ignore doc files
+
+commit fe6ab8aa665840645698849ab8e91cb16beeba86
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:26:26 2023 +0200
+
+    hide unused links
+
+commit 82cd5c79f9275c691ff718903169691d3085620c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:26:13 2023 +0200
+
+    add calender creator button
+
+commit bc18d99fd49202e116a1068648e46a762bfa7833
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Nov 6 00:06:02 2023 +0200
+
+    add selectable ics files
+
+commit 07162b44d8e1669368dca640a9791bb636cb65b9
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 21:22:42 2023 +0200
+
+    import moment timezone
+
+commit be8a1b88ec63532e2a2f456071307d6bc661adca
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 21:21:09 2023 +0200
+
+    Implemented unified resource retrieval endpoint
+    
+    - Created a new /get-resources endpoint in the Express router.
+    - Enabled retrieval of both 'modules' and 'calendars' via a required 'type' query parameter.
+    - Allowed fetching of specific files when the 'file' query parameter is provided.
+    - Included input validation for the 'type' parameter to ensure it only accepts 'modules' or 'calendars'.
+    - Added error handling for file existence checks and directory reading failures.
+    - Modified error messages to provide clearer descriptions and, where applicable, error details.
+
+commit 21aac64b46c58d2fd7af99171fd2b90bebcdaf49
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 21:17:17 2023 +0200
+
+    create ics parser
+
+commit 7140ee991b28b17190aea9523a270f13d88027a9
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 18:44:43 2023 +0200
+
+    Refactor generate-ics endpoint to use fs.promises for async file operations
+
+commit 89ab6c586771a367fefc207ad7d9767942d8abbb
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 18:43:44 2023 +0200
+
+    customise calender styling
+
+commit 4280316e024c2b67eb7692407e7beafcc93e945e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 17:51:15 2023 +0200
+
+    ics creator api path
+
+commit cf1b46ad6752a799a4d6c1a880e560a16067d24e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 15:45:04 2023 +0200
+
+    add calender view
+
+commit 535d9a35864fdc9e58f9aea8f5433681fba3f01a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 11:55:43 2023 +0200
+
+    update server root name
+
+commit db9ec9ceefba3be95e76778f517d96a52b5c2348
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 11:53:13 2023 +0200
+
+    update documentation
+    
+    Update the js file documentation for parsing by the jsdoc generator
+
+commit 7aac3fe1aae11d6bbc85011d06847f5a60e28663
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 11:55:43 2023 +0200
+
+    update server root name
+
+commit 0def1d220304827673de49e4f60b205c3c87a71f
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 11:53:13 2023 +0200
+
+    update documantation
+
+commit f28cf9d5b91db9231d4177b1ba3dab4d3b636d8c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 01:34:29 2023 +0200
+
+    configure jsdoc
+
+commit 8e38c51a809370752f73ce2c4a97e200b40a85d0
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sun Nov 5 00:55:23 2023 +0200
+
+    updade main ts file comments
+
+commit e234ded31d60ae385b05d8e13fd6238cf55103d4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Nov 3 23:25:12 2023 +0200
+
+    update readme
+
+commit 32218b39b2d5ed68ddb01f0b11be84cf20ace64c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Nov 2 23:32:05 2023 +0200
+
+    update readme
+
+commit b631065d684de703fcab35bcd8af28393ed2fc05
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 30 22:27:54 2023 +0200
+
+    add todo
+
+commit 9e12b2cee446e7587419b4c123add6d35ebee254
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 30 22:25:48 2023 +0200
+
+    update readme
+
+commit ca56edf001c4a785fccd7c95dd08daa0190f31ab
+Merge: 762d63c b0a5aaa
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 02:01:48 2023 +0200
+
+    Merge branch 'development' of https://github.com/innocentwkc/ikigai-flow into development
+
+commit 762d63c4ca50da99a366bdc34f828ee4a5731a91
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 02:00:05 2023 +0200
+
+    Merge branch 'development' of https://github.com/innocentwkc/ikigai-flow into development
+
+commit 81926a73e82f73b2d5e7b7533f59ca94397704da
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:55:32 2023 +0200
+
+    install kleur package, to color terminal
+
+commit 0ac54485f2e6c14977b75b03c067c686fe53371c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:23:27 2023 +0200
+
+    update server and application ports
+    
+    Web app frontend port: 5000
+    Server port: 5001
+
+commit b0a5aaa816789bd6b15d859236c4c7f30d32ad77
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:49:36 2023 +0200
+
+    install kleur package, to color terminal
+
+commit c5753e848d8a6e7f3c215b76ce61c088891a9365
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:23:27 2023 +0200
+
+    update server and application ports
+
+commit f70ffef935e7b64fb9b7f055b283b4c23d3abfc1
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:21:44 2023 +0200
+
+    modify script names
+
+commit 863035c7c4b967ac33837fe772592f4888da4e94
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 01:09:06 2023 +0200
+
+    add concurrently module to run concurrent scripts
+
+commit aa2e35a600f9cfbd94ee0f544d4e762fbead7b06
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Thu Oct 26 00:48:02 2023 +0200
+
+    modify random file name generation seed
+
+commit 606ed9026ee893c1f3bc69b845b848c324e452e4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 25 23:10:45 2023 +0200
+
+    rename upload front end routes
+
+commit dbee8c0646e94e8b6c9840645b7e6364b15a5103
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 25 23:02:10 2023 +0200
+
+    add json module file path route and links
+
+commit 269cc30558f0f3a800e50aefd112241d13d3df41
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 25 21:12:28 2023 +0200
+
+    change saved view to uploads
+
+commit 958908d12d3a333fa6ac68f9274b390bd3366d15
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 25 02:29:22 2023 +0200
+
+    edits
+
+commit 9ef4499659ae5f961b1336012509959d1a00f55f
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 25 02:28:11 2023 +0200
+
+    implement ics file generator
+
+commit 96e20d49274580a4a1b0493111f540c46c7c97db
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 24 21:35:53 2023 +0200
+
+    update navgiation indicator
+
+commit dedd05b4d847dce6e0fa6c84b4f83062026f589b
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 17 20:23:07 2023 +0200
+
+    add ics package
+
+commit 66065b7a7e5c52162aa5fbea7515b039016536d0
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 17 14:39:15 2023 +0200
+
+    fix width
+
+commit 4aace99aeb621332b17aab01075dec73a5a90fb4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 20:02:52 2023 +0200
+
+    switch to production environment
+
+commit 8efb01886f3d503f7912fd1cfaadde4210915e9b
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 20:01:12 2023 +0200
+
+    Build: 16.10.2023 20:01
+
+commit a768120f3cda40257ce1983f2523509fc21743f4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 20:00:36 2023 +0200
+
+    cleanup
+
+commit 2b6c7d5cb4e84940d81ee7c799b49f8147e4f005
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 19:59:43 2023 +0200
+
+    added question count tracker
+
+commit fe9d907e45ada6f28ceaba48911ba7fdc0c6152f
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 18:31:39 2023 +0200
+
+    add session counter
+
+commit 9e75b8ed0b45ac3660b7c11874eb022f275ad1c9
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 16:34:25 2023 +0200
+
+    add
+
+commit 92d5d49860be98eff66de1ec411c3d270ccff41e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 15:47:24 2023 +0200
+
+    add modifiable time
+
+commit d549fde19886c4340843407decbd54af5550381a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 14:04:20 2023 +0200
+
+    ignore dist directory
+
+commit f382865415772688e887c0aae40a907208c3d083
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 13:47:15 2023 +0200
+
+    rename popular view to saved
+
+commit 545af62e47ac075a5f6259157ad4cf7ab6668805
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 13:37:38 2023 +0200
+
+    Fix: ring alarm when display is 00:00
+
+commit b94eaeb0aa5f56492250e6bd725d42742fd7e3c4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 13:31:10 2023 +0200
+
+    add bell sound to alarm
+
+commit 986c34c9faa96b1d8abc6c69643d46624fdf9a89
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 16 12:58:30 2023 +0200
+
+    add pomodoro timer view
+
+commit bf9d2d7560d718b83848bfc4d42a3c3ba398f69d
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 22:53:45 2023 +0200
+
+    add
+
+commit 188ebce9b185f917414fa04db2acc9e121b9d64f
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 21:38:22 2023 +0200
+
+    edit navigation
+
+commit ca4ff347a632027f42c76f94d40cc7282dc2695e
+Author: Innocent W.K. Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 17:14:06 2023 +0200
+
+    get modules
+
+commit b9e3aadc8ca3e310847bc84682f1185663cc5255
+Author: Innocent W.K. Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 17:13:31 2023 +0200
+
+    flex navigation
+
+commit c3c66c9e1d9dcc661181b3a7b0c6b025c85f40ee
+Author: Innocent W.K. Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 14:41:52 2023 +0200
+
+    fix fetch uploads route bug
+
+commit 9046fa4788ae1e3edceafd747f1aedb1d088d622
+Author: Innocent W.K. Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 13:09:27 2023 +0200
+
+    add module to perform server prechecks
+
+commit 24478e9fcd95baa9ee8fb11fc0ffdf25a0c92f83
+Author: Innocent W.K. Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Oct 9 12:09:56 2023 +0200
+
+    update view routes
+
+commit 3239f76b816e5ed754316c2fa594cef0ed1a1064
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 23:58:51 2023 +0200
+
+    Build: 07.10.2023 23:58
+
+commit b9b48d16368dc861325411887a08ad1fe1dc12c8
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 23:55:56 2023 +0200
+
+    rename menu routes
+
+commit daff8a849c7f1663e7375b774bd7e5444c57c5a2
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 23:55:37 2023 +0200
+
+    import extractor to server path
+
+commit 4dccb5dfedcae3b0d0e2acd156dcd6889373dd4e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 23:54:16 2023 +0200
+
+    rename main.js to exctractor.js
+
+commit 54fa54b65c08d676d4293213d6dc497482ab9e81
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 20:33:01 2023 +0200
+
+    edit menu
+
+commit ebb0c88c3f4dbc1127a969209a2cac471c940c27
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 20:01:59 2023 +0200
+
+    pdfconvert route
+
+commit 6b7cab375f4d48ae1caaae4fa34e2b07af3b0e08
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 20:01:41 2023 +0200
+
+    restore dev mode
+
+commit 9b50b83b3b78bb624cf55c68bbb4ceee820bd4f1
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 16:59:24 2023 +0200
+
+    Build: 07.10.2023 16:59
+
+commit 260f3d5fb41ee63a1185bb958ad712cfb1b2bfbd
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 16:59:09 2023 +0200
+
+    modify production api upload
+
+commit f2487cb6be061c964ca1a1bc16271aa455bab474
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Oct 7 16:51:58 2023 +0200
+
+    switch to production mode
+
+commit 619048ca30fa7999e4b5a49d0a1fd5d743aa6dd3
+Merge: 16d776c 815479d
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:46:39 2023 +0200
+
+    Merge branch 'development'
+
+commit 815479df961adb43557472a69392ad652198df1a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:38:55 2023 +0200
+
+    add production package.json
+
+commit 16d776c2d4f73d9fe0d8889f7ed7a17faf223ab6
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:28:36 2023 +0200
+
+    Build: 06.10.2023 23:28
+
+commit bee6815e423cb5ef25337170d18c9483ec8ba2f4
+Merge: 8123810 f2573cf
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:28:04 2023 +0200
+
+    Merge branch 'development'
+
+commit f2573cf20ecf2bc9197eb45d0214333777c8bfad
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:24:58 2023 +0200
+
+    Apply app rename
+
+commit 0ae711116ea8758d4d477679557975751924f02d
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Oct 6 23:24:13 2023 +0200
+
+    add development variable
+
+commit 8123810cb4bac4aa300c2542f225e6c51c84d2f0
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 21:08:51 2023 +0200
+
+    Build: 04.10.2023 21:08
+
+commit da6b3dfcd70d8de94748678714b2dcbed6742882
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 21:08:40 2023 +0200
+
+    test workflow
+
+commit 34a35e9113a843bec9b45e28fe79bab32f8df27c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:50:48 2023 +0200
+
+    Build:
+
+commit 69824771dd34e9b374b3abd5315003637c063a7b
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:46:46 2023 +0200
+
+    adjust build parameters
+
+commit c28316a739df474859efdf9eae3e88ffe22c1112
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:46:18 2023 +0200
+
+    modify gitignore
+
+commit 17259b4be75a8bc6a7a390fb3c36a160d1a73fb8
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:26:01 2023 +0200
+
+    add author
+
+commit b689ca4b7f08c6cf3a022c1d69b4fcc74e9aefec
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:15:51 2023 +0200
+
+    modify directories
+
+commit 41e887cedaafe4dec7564e7f0950e88263dbf988
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Wed Oct 4 20:10:30 2023 +0200
+
+    modify action
+
+commit c50fdc94b47af49628f9b256d6406d6fdb2ca120
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:39:34 2023 +0200
+
+    update app version
+
+commit 9307fb18c03d767b1e1f1346fb73ad8e9c510423
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:36:39 2023 +0200
+
+    change deployment branch
+
+commit 2fe50cad827caf906d121cd20610e65e67895f76
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:28:49 2023 +0200
+
+    git ignore dist
+
+commit 846ace0ad5b4ff065a54bf6cd294da281805cf9e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:25:30 2023 +0200
+
+    edit 1.2
+
+commit 36b3e7daaa2dfee041f50cfbe402011700e8bb54
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:14:16 2023 +0200
+
+    re change
+
+commit d8bb42ce600ec51b531215442effa1559fd249ed
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:12:08 2023 +0200
+
+    v update 1.1
+
+commit a1c09cdcee4a4a2e8433557da6ef1fd970cc966a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:11:12 2023 +0200
+
+    update version
+
+commit 8ec8d88d8427456b3e527fb62f618a1e55ddbf2e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:08:49 2023 +0200
+
+    re edit
+
+commit 4ac59dd36459243b30c7dc0d8a168ee5cf56289a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:05:03 2023 +0200
+
+    Update cpanel_deploy.yml
+
+commit 33fe04301d0160f58cafad335876fb1240072522
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 22:01:32 2023 +0200
+
+    Update cpanel_deploy.yml
+
+commit 9fc35e049e00ada6fee932b1594f93d938c02f33
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 21:58:07 2023 +0200
+
+    edit action
+
+commit f4d2eb172d5afbc078678c9b6a13354672cce331
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 21:48:39 2023 +0200
+
+    Create cpanel_deploy.yml
+
+commit 45ca393ade2abcf33526b06868f46fe07fadbe96
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Oct 3 00:20:16 2023 +0200
+
+    nav and new routes
+
+commit 66930f04d7df8323b67d4e6e1a4f3c5e1bb8c627
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Sep 25 06:28:59 2023 +0200
+
+    create views
+
+commit 4d700e8db04c0fec30f73cdf11489cf47c6639c8
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Mon Sep 25 06:28:29 2023 +0200
+
+    refactor css
+
+commit c4df589218b798e078df952c55157ace6ea4804a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Sat Sep 23 23:28:59 2023 +0200
+
+    application navigation
+
+commit f5df7d39d4d4798eba25fda127e18605d033b75a
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 23:24:41 2023 +0200
+
+    update comments
+    
+    update comments using Javadoc syntax for the server.js file and upload.js middleware
+
+commit fa6d02d01635f6e65abb21269c7d737f82aec4f6
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 23:17:18 2023 +0200
+
+    add logo, modify home page
+    
+    - created the homepage vue file
+    - added temporary logo for use in the
+    app
+
+commit 8f6fd6ebe70c99cd5619eed2a779c41677eac7cd
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 23:16:48 2023 +0200
+
+    modilfy server uploads code
+
+commit c067c619e22d6997ca77909683f084a3a3ef8cda
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 21:23:16 2023 +0200
+
+    add tailwind library to project
+
+commit 1c0ffb8a035b3dc819cc4981c448740cc3d1fc88
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 20:54:48 2023 +0200
+
+    modify favicon and add credits page
+
+commit c446b0a21d7309c8031d97cc70390494b1ad1ae4
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 20:54:08 2023 +0200
+
+    server and file upload module
+
+commit 22182a93d4644f32032342c1c84a7f598bdee16c
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 20:53:38 2023 +0200
+
+    add multer module
+
+commit befd678a08d47338ca4c7d7e1ea4f0de870e69cb
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 15:36:17 2023 +0200
+
+    Update README.md
+
+commit a3208551b4384ab025d6530d22bc1849e1e8c1b8
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Fri Sep 22 15:34:32 2023 +0200
+
+    add comments
+
+commit 8025386ec13dfed3c9f58a892d570ce6d4946dcd
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 23:20:32 2023 +0200
+
+    Shorten module names
+
+commit 639d3769d3a9b18bad037421df6cd75cea4c83d3
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 23:20:08 2023 +0200
+
+    import server npm modules
+
+commit 940ae4825fc23fccae22b6029039653f681b9e07
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 22:08:10 2023 +0200
+
+    remove unnecssary modules from server
+
+commit f3436ebe725ae8d2b11d8aab466e234905726d16
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 22:04:04 2023 +0200
+
+    Add comments to modules
+
+commit c4dc2dfb7d46481bbf64d3799872a6b167aaa36e
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 21:57:20 2023 +0200
+
+    local support server modules
+
+commit d14b0e77bddd89c2c309adacd8947aeb8dff005d
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 21:56:53 2023 +0200
+
+    main files and modules
+
+commit 68109f8aadbe795fd72f1f38c0c8dc6069e88889
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 21:51:30 2023 +0200
+
+    ignore test data
+
+commit 30566526fa4ab33baa90d197c969ca8ed73f98d0
+Author: Innocent WK Chinyemba <innocentwkc@gmail.com>
+Date:   Tue Sep 5 15:48:47 2023 +0200
+
+    init
