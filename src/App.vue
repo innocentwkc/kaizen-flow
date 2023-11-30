@@ -30,7 +30,7 @@ import Navigation from './components/Navigation.vue'
 
 <template>
   <Navigation />
-  <RouterView class="view-body" />
+  <RouterView class="view-body"/>
 </template>
 
 <style>
